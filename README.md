@@ -17,9 +17,9 @@
 ## 开发
 
 ### 分支
-main -- release vesion
-master -- stable version
-dev/$name -- dev version
+- main -- release vesion
+- master -- stable version
+- dev/$name -- dev version
 
 ### 合并
 1. dev/$name merge into master by yourself
