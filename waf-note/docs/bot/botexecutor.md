@@ -78,7 +78,7 @@ Udger https://udger.com/ User Agent Analysis
 
 
 
-在BOT维护Feature的过程中，才用了本地缓存 + 集中式缓存的二级缓存机制。
+在BOT维护Feature的过程中，采用了本地缓存 + 集中式缓存的二级缓存机制。
 
 
 ## 缓存技术选型
