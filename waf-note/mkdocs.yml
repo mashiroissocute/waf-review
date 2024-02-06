@@ -87,8 +87,8 @@ nav:
       - sync.map : basic/syncmap.md
       - sync.pool: index.md
       - sync.waitgroup: index.md
-      - singleflight: singleflight.md
-      - benchmark: benchmark.md
+      - singleflight: index.md
+      - benchmark: index.md
       - ants.Pool: index.md
       - recover: index.md
       - json: hub/json.md

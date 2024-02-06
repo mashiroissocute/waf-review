@@ -68,3 +68,8 @@ Apache Flink与其他流计算框架（如Apache Storm、Apache Samza、Spark St
 ![特征输出](featurestore.png)
 
 特征缓存的细节将在[BOT执行器](botexecutor.md)中详细讲解。
+
+
+
+
+## Flink总结
