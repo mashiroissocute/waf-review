@@ -13,4 +13,4 @@
 
 
 # 全景图
-![freqai-logo](assets/freqai_doc_logo.svg)
+![Alt text](overview.png)

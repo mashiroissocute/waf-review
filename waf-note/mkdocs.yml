@@ -35,6 +35,18 @@ nav:
       - 网络层协议:
         - 安全组: index.md
     - 防护:
+      - HUB:
+        - 设计: hub/desgin.md
+        - TRPC: index.md
+        - FastHttp: index.md
+        - polaris: 
+          - hash路由: index.md
+          - 监控上报: index.md
+        - GC: 
+          - ballast: index.md
+        - monitor: 
+          - pprof: index.md
+        - 项目总结: hub/summary.md
       - 基础安全:
         - WEB安全:
           - 规则引擎: index.md
@@ -68,18 +80,6 @@ nav:
         - CK: index.md
       - KafKa:
         - kafka: index.md
-    - HUB:
-      - 设计: hub/desgin.md
-      - TRPC: index.md
-      - FastHttp: index.md
-      - polaris: 
-        - hash路由: index.md
-        - 监控上报: index.md
-      - GC: 
-        - ballast: index.md
-      - monitor: 
-        - pprof: index.md
-      - 项目总结: hub/summary.md
     - 基础:
       - PB : basic/pb.md
       - Cache : basic/cache.md
@@ -99,11 +99,6 @@ nav:
       - flink:
         - DatasStreamAPI: basic/flink/datastreamapi.md
         - StateBackEnd: basic/flink/statebackend.md
-
-
-
-
-
 
 
 theme:
