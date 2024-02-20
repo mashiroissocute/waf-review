@@ -218,3 +218,28 @@ func ... {
     }
 }
 ```
+
+
+## 删除链表重复元素
+```golang
+func ...(){
+
+    slow,fast := head,head
+
+    for fast != nil {
+        if slow.val != fast.val{
+            slow.next = fast
+            slow = slow.next
+        }
+
+        fast = fast.next
+    }
+
+    slow.next = nil 
+    return head
+}
+
+
+```
+
+

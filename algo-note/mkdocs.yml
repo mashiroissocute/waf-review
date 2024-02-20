@@ -2,8 +2,12 @@ site_name: algo
 use_directory_urls: True
 nav:
   - 概览: index.md
-  - 链表: list/20240219.md
-  - 数组: array/20240219.md
+  - 链表: 
+    - 双指针: list/doublepointer.md
+  - 数组: 
+    - 双指针: array/doublepointer.md
+    - 二分算法: array/binaryalgo.md
+    - 滑动窗口: array/slidingwindow.md
    
 
 theme:
