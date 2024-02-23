@@ -19,6 +19,7 @@ nav:
         - 小程序/Donut/WAF: access/wx/miniprogram.md
         - Donut接入WAF: access/wx/wafaccess.md
         - 项目总结: access/wx/summary.md
+        - 茶百道: access/wx/chabaidao.md
       - TCE-WAF:
         - tce: index.md
       - 接入引擎:

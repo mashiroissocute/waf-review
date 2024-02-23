@@ -2,6 +2,8 @@
 - https://leetcode.cn/problems/minimum-window-substring/description/
 
 
+滑动窗口一般用于搜索一个满足条件的连续区间
+
 ## 框架
 ```golang
 // 滑动窗口算法框架
@@ -24,10 +26,11 @@ func slidingWindow(s string) {
 
 
         // 停止增加 right，转而不断增加 left 指针缩小窗口，直到窗口中的字符串不再符合要求
-        for left < right && window needs shrink {
+        for left < right && window needs shrink { // 判断什么时候开始收紧窗口，十分重要
+            //在这里更新结果
+
             d := s[left]
             left++
-
             // 进行窗口内数据的一系列更新
             window[d]--
         }
