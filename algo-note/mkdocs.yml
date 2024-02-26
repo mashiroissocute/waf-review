@@ -9,6 +9,7 @@ nav:
     - 二分算法: array/binaryalgo.md
     - 滑动窗口: array/slidingwindow.md
   - 二叉树: binarytree/binarytree.md
+  - BFS: bfs/bfs.md
   
    
 

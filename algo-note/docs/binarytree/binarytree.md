@@ -314,6 +314,7 @@ func ...() {
 ## 二叉树层序遍历
 
 ```golang
+// list
 import container/list
 func ...() {
     l := list.Init()
@@ -338,4 +339,32 @@ func ...() {
     }
 
 }
+```
+
+```golang
+// array 
+func ...(){
+    q := make([]*TreeNode,0)
+    if root != nil{
+        q = append(q, root)
+    }
+
+    for len(q) != 0 {
+        sz := len(q)
+        for i:=0;i<sz;i++{
+            cur := q[0]
+            q := q[1:]
+            print(cur.val)
+
+            if cur.left != nil {
+                q = append(q, cur.left)
+            }
+            
+            if cur.right != nil {
+                q = append(q, cur.right)
+            }
+        }
+    }
+}
+
 ```
