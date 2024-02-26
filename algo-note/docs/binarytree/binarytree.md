@@ -9,6 +9,46 @@
 二叉树的所有问题，就是在前中后序位置注入逻辑，去达到自己的目的，你只需要单独思考每一个节点应该做什么，其他的不用你管，抛给二叉树遍历框架，递归会在所有节点上做相同的操作。
 
 
+
+## 函数写法
+二叉树题目的递归解法可以分两类思路，第一类是遍历一遍二叉树得出答案，第二类是通过分解问题计算出答案，这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架。
+
+二叉树中用遍历思路解题时函数签名一般是 void traverse(...)，没有返回值，靠更新外部变量来计算结果
+
+而分解问题思路解题时函数名根据该函数具体功能而定，而且一般会有返回值，返回值是子问题的计算结果。
+
+与此对应的，回溯算法核心框架 中给出的函数签名一般也是没有返回值的 void backtrack(...)，而在 动态规划核心框架 中给出的函数签名是带有返回值的 dp 函数。这也说明它俩和二叉树之间千丝万缕的联系。
+
+
+## 前中后序的注意点
+- 中序用于BST更多
+
+- 前序位置的代码只能从函数参数中获取父节点传递来的数据。 例如`如果把根节点看做第 1 层，如何打印出每一个节点所在的层数？`
+
+- 后序位置的代码不仅可以获取参数数据，还可以获取到子树通过函数返回值传递回来的数据。`如何打印出每个节点的左右子树各有多少节点？`
+
+
+
+
+## 二叉树和DFS/BFX、回溯、动态规划
+动归/DFS/回溯算法都可以看做二叉树问题的扩展，只是它们的关注点不同：
+
+- 动态规划算法属于分解问题的思路，它的关注点在整棵「子树」。
+- 回溯算法属于遍历的思路，它的关注点在节点间的「树枝」。
+- DFS/BFS算法属于遍历的思路，它的关注点在单个「节点」。DFS对应前序遍历，BFS对应层序遍历。
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 快速排序
 二叉树前序遍历
 
@@ -187,4 +227,115 @@ func postorderTravel(root *TreeNode) {
 
 
 
+```
+
+## 二叉树的最大深度
+
+```golang
+func maxDeep(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+
+    leftDeep := maxDeep(root.left)
+    rightDeep := maxDeep(root.right)
+    
+    return max(leftDeep,rightDeep) + 1
+
+}
+```
+
+## 打印每一个节点所在的层数
+```golang
+
+func printTree(root *TreeNode) {
+    printLevel(root,1)
+}
+
+func printLevel(root *TreeNode, level int) {
+    if root == nil {
+        return 
+    }
+
+    print(root.val, level)
+    printLevel(root.left, level+1)
+    printLevel(root.right, level+1)
+}
+
+```
+
+
+## 打印节点的左右子树各有多少节点
+```golang
+
+func printTree(root *TreeNode) {
+   printNum(root)
+}
+
+func printNum(root *TreeNode) int{
+    if root == nil {
+        return 0
+    }
+
+    leftNum := printNum(root.left)
+    rightNUm := printNum(root.right)
+
+    print(root.val,leftNum)
+    print(root.val,rightNum)
+    return leftNum+rightNum+1
+}
+```
+
+
+## 二叉树的直径
+```golang
+func ...() {
+    maxDia := math.MinInt
+
+    var diameterOfBinaryTree func (root *TreeNode) int
+    diameterOfBinaryTree = (root *TreeNode) int{
+        if root == nil {
+            return 0 
+        }
+
+        leftLevel := diameterOfBinaryTree(root.left)
+        rightLevel := diameterOfBinaryTree(root.right)
+        if max(leftLevel,rightLevel) > maxDia {
+            maxDia = max(leftLevel,rightLevel)
+        }
+        return max(leftLevel,rightLevel) + 1
+    }
+
+    diameterOfBinaryTree(root)
+    return max
+}
+```
+
+## 二叉树层序遍历
+
+```golang
+import container/list
+func ...() {
+    l := list.Init()
+    if root != nil {
+        l.PushBack(root)
+    }
+
+
+    for l.Len() != 0 {
+        cur := l.Front()
+        print(cur.(*TreeNode))
+        l.remove(cur)
+        
+        if cur.left !=nil {
+            l.PushBack(cur.left)
+        }
+
+        if cur.right != nil {
+            l.PushRight(cur.right)
+        }
+
+    }
+
+}
 ```
