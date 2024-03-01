@@ -2,6 +2,8 @@ site_name: algo
 use_directory_urls: True
 nav:
   - top sales: sales/topsales.md
+  - v2ray: vpn/v2ray.md
+  - shadowsock: vpn/ss.md
    
 
 theme:

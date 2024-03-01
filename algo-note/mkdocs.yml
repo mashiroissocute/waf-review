@@ -10,7 +10,8 @@ nav:
     - 滑动窗口: array/slidingwindow.md
   - 二叉树: binarytree/binarytree.md
   - BFS: bfs/bfs.md
-  
+  - 回溯: backsource/backsource.md
+  - 动态规划: dp/dp.md
    
 
 theme:

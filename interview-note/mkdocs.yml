@@ -2,6 +2,44 @@ site_name: algo
 use_directory_urls: True
 nav:
   - jiyun: jiyun/jiyun.md
+  - 基础:
+    - PB : basic/pb.md
+    - Cache : basic/cache.md
+    - golang:
+      - Lock : basic/lock.md
+      - sync.map : basic/syncmap.md
+      - sync.pool: index.md
+      - sync.waitgroup: index.md
+      - singleflight: index.md
+      - benchmark: index.md
+      - ants.Pool: index.md
+      - defer/panic/recover: basic/golang/panic.md
+      - chan: index.md
+    - json: hub/json.md
+    - redis:
+      - pipeline: basic/redis/pipeline.md
+    - mysql: 
+      - 分页算法: basic/mysql/page.md
+      - 知识点: basic/mysql/point.md
+    - mongo: index.md
+    - kafka: basic/kafka.md
+    - flink:
+      - DatasStreamAPI: basic/flink/datastreamapi.md
+      - StateBackEnd: basic/flink/statebackend.md
+    - docker:
+      - useage: basic/docker/useage.md
+    - git: basic/git/useage.md
+    - 应用层协议:
+      - HTTP: index.md
+      - TLS: index.md
+      - WebSocket: index.md
+    - 网络层协议:
+      - 连接层协议:
+        - TCP: index.md
+      - 网络层协议:
+        - 安全组: index.md
+        - socket: basic/ip/socket.md
+        - anycast: basic/ip/anycast.md
    
 
 theme:
