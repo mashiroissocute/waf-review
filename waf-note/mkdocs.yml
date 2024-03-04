@@ -3,16 +3,31 @@ use_directory_urls: True
 nav:
     - 概览: index.md
     - 控制面:
-      - API: index.md
+      - API: 
+        - redis: stream.md
       - trpc: index.md     
     - 接入:
       - 发展历程: access/access.md
       - SAAS-WAF:
         - DNS: access/saas/dns.md
         - 四层负载均衡: index.md
+        - 自研上云:
+          - 从1.0到1.5的waf设计: access/saas/group/design.md
+          - 组件改造: access/saas/group/rebuild.md
+          - 迁移方案: access/saas/group/transfer.md
+          - 性能和成本: access/saas/group/proformance.md
+        - 过载保护:
+          - 统计: access/saas/limit/count.md
+          - 带宽限速: access/saas/limit/bandlimit.md
+          - 沙箱策略: access/saas/limit/sandbox.md
+          - 单机过载保护: access/saas/limit/rslimit.md
+          - 一键bypass: access/saas/limit/bypass.md
         - IPV6: 
           - 技术方案: access/saas/ipv6/method.md
           - 知识栈: access/saas/ipv6/ipv6stack.md
+        - 安全组:
+          - 一键放通: access/saas/sg/auto.md
+          - netfilter: access/saas/sg/netfilter.md
         - 项目总结: index.md
       - CLB-WAF:
         - 七层负载均衡: index.md
@@ -63,6 +78,8 @@ nav:
           - BOT特征提取: bot/botfeature.md
           - BOT执行器: bot/botexecutor.md
           - BOTAI执行器: bot/botaiexecutor.md
+        - 其他思路:
+          - 科恩实验室: bot/keen.md
       - API安全:
         - API安全: index.md
         - API限流: index.md
