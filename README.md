@@ -9,8 +9,8 @@
 
 ### step by step 
 - 1.安装python3.11
-- 2.pip install mkdocs
-- 3.pip install mkdocs mkdocs-material
+- 2.pip3 install mkdocs
+- 3.pip3 install mkdocs mkdocs-material
 - 4.mkdocs serve -a 127.0.0.1:80
 
 
