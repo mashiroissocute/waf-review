@@ -16,6 +16,7 @@ nav:
           - 组件改造: access/saas/group/rebuild.md
           - 迁移方案: access/saas/group/transfer.md
           - 性能和成本: access/saas/group/performance.md
+          - tke: access/saas/group/tke.md
         - 过载保护:
           - 统计: access/saas/limit/count.md
           - 带宽限速: access/saas/limit/bandlimit.md
