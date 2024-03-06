@@ -15,7 +15,7 @@ nav:
           - 从1.0到1.5的waf设计: access/saas/group/design.md
           - 组件改造: access/saas/group/rebuild.md
           - 迁移方案: access/saas/group/transfer.md
-          - 性能和成本: access/saas/group/proformance.md
+          - 性能和成本: access/saas/group/performance.md
         - 过载保护:
           - 统计: access/saas/limit/count.md
           - 带宽限速: access/saas/limit/bandlimit.md
@@ -28,6 +28,8 @@ nav:
         - 安全组:
           - 一键放通: access/saas/sg/auto.md
           - netfilter: access/saas/sg/netfilter.md
+        - TLS版本定制:
+          - 需求: access/saas/tls/demand.md
         - 项目总结: index.md
       - CLB-WAF:
         - 七层负载均衡: index.md
@@ -41,7 +43,8 @@ nav:
       - TCE-WAF:
         - tce: index.md
       - 接入引擎:
-        - NGINX: access/engine/nginx.md
+        - NGINX: 
+          - cache: access/engine/nginx/cache.md
         - LUA: access/engine/lua.md
     - 防护:
       - HUB:
@@ -84,6 +87,7 @@ nav:
         - API安全: index.md
         - API限流: index.md
     - 日志:
+      - lua上传日志: logs/lua.md
       - log-syncer: index.md
       - ElasticSearch:
         - ES: index.md
@@ -120,11 +124,11 @@ nav:
       - docker:
         - useage: basic/docker/useage.md
       - git: basic/git/useage.md
-      - 应用层协议:
-        - HTTP: index.md
-        - TLS: index.md
-        - WebSocket: index.md
-      - 网络层协议:
+      - 网络:
+        - 应用层协议:
+          - HTTP: basic/network/http.md
+          - TLS: index.md
+          - WebSocket: index.md
         - 连接层协议:
           - TCP: index.md
         - 网络层协议:
