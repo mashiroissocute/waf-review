@@ -2,9 +2,10 @@ site_name: WAF
 use_directory_urls: True
 nav:
     - 概览: index.md
+    - 未完成整理: todo.md
     - 控制面:
       - API: 
-        - redis: stream.md
+        - 防范sqlinject: console/api/sqlinject.md
       - trpc: index.md     
     - 接入:
       - 发展历程: access/access.md
@@ -31,6 +32,9 @@ nav:
           - netfilter: access/saas/sg/netfilter.md
         - TLS版本定制:
           - 需求: access/saas/tls/demand.md
+        - 杂项:
+          - sni: access/saas/others/sni.md
+          - ssrf: access/saas/others/ssrf.md
         - 项目总结: index.md
       - CLB-WAF:
         - 七层负载均衡: index.md
@@ -128,7 +132,8 @@ nav:
       - 网络:
         - 应用层协议:
           - HTTP: basic/network/http.md
-          - TLS: index.md
+          - TLS: basic/network/tls.md
+          - 回话保持/身份认证: basic/network/cookie_token.md
           - WebSocket: index.md
         - 连接层协议:
           - TCP: index.md
