@@ -6,6 +6,8 @@ nav:
     - 控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
+        - log: console/api/log.md
+        - 数据生命周期管理: console/api/lifecycle.md
       - trpc: index.md     
     - 接入:
       - 发展历程: access/access.md
@@ -50,7 +52,12 @@ nav:
       - 接入引擎:
         - NGINX: 
           - cache: access/engine/nginx/cache.md
-        - LUA: access/engine/lua.md
+        - LUA: 
+          - init: access/engine/lua/init.md
+          - rewrite: access/engine/lua/rewrite.md
+          - access: access/engine/lua/access.md
+          - filter: access/engine/lua/filter.md
+          - log: access/engine/lua/log.md
     - 防护:
       - HUB:
         - 设计: hub/desgin.md
@@ -120,6 +127,7 @@ nav:
         - pipeline: basic/redis/pipeline.md
       - mysql: 
         - 分页算法: basic/mysql/page.md
+        - metadatalock: basic/mysql/metadatalock.md
         - 知识点: basic/mysql/point.md
       - mongo: index.md
       - kafka: basic/kafka.md
@@ -131,16 +139,16 @@ nav:
       - git: basic/git/useage.md
       - 网络:
         - 应用层协议:
-          - HTTP: basic/network/http.md
-          - TLS: basic/network/tls.md
-          - 回话保持/身份认证: basic/network/cookie_token.md
+          - HTTP: basic/network/http/http.md
+          - TLS: basic/network/http/tls.md
+          - 回话保持/身份认证: basic/network/http/cookie_token.md
           - WebSocket: index.md
         - 连接层协议:
           - TCP: index.md
         - 网络层协议:
           - 安全组: index.md
-          - socket: basic/ip/socket.md
-          - anycast: basic/ip/anycast.md
+          - socket: basic/network/ip/socket.md
+          - anycast: basic/network/ip/anycast.md
 
 
 

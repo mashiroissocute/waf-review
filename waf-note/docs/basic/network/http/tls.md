@@ -65,3 +65,30 @@ SSL修改密文协议的设计目的是为了保障SSL传输过程的安全性�
 server端对加解密参数的确认
 ### 9.c->s Encryted Handshake Message
 报文的目的就是告诉对端自己在整个握手过程中收到了什么数据，发送了什么数据。来保证中间没人篡改报文。其次，这个报文作用就是确认秘钥的正确性。因为Encrypted handshake message是使用对称秘钥进行加密的第一个报文，如果这个报文加解密校验成功，那么就说明对称秘钥是正确的。
+
+
+### 密钥交换协议
+#### RSA密钥交换
+TLS握手的目的之一是基于非对称加密以及证书机制协商一个对称密钥。
+对称密钥的生成是`master_secret = PRF(pre_master_secret, "master secret", ClientHello.random + ServerHello.random)`。
+其中Client随机生成46字节+2字节的client_version，作为premaster secret。再通过RSA非对称加密算法和服务器公钥加密后，传递给Server，Server只需要用私钥解密即可。
+在私钥不泄漏的情况下，第三方无法知道pre_master_secret内容。
+但如果私钥泄漏了呢？一旦私钥泄漏，之前的转输内容将全部被解密，这是由于私钥参与了密钥交换，不满足[前向安全性(Forward Secrecy)](https://zh.wikipedia.org/wiki/%E5%89%8D%E5%90%91%E4%BF%9D%E5%AF%86)。
+#### DH密钥交换
+为了解决这个问题，产生了DH密钥交换协议(Diffie–Hellman key exchange)，其流程如下：
+1. 客户端发起请求；
+2. 服务端生成一个私钥a，并选定p，g，计算$ A=g^a mod  p $，通过`Server Key Exchange`发送p,g A 到客户端；
+3. 客户端生成一个私钥b, 计算$B=g^bmodp$，通过`Client Key Exchange`发送B到服务器。并计算premaster_key $K=A^b mod p$
+4. 服务端生成premaster key $K=B^a mod p$；
+这样双方即协商生成了premaster key K。
+
+**DHE**：DH协商中服务端私钥a可以使用证书中的私钥，也可以使用临时生成一个私钥。
+第一种由于证书私钥参与了密钥的生成，所以一旦证书的私钥泄漏，之前的传输就有可能被破解，所以是非前向安全性。而使用临时生成的私钥可以解决这个问题，临时生成私钥的DH密钥交换算法称之为DHE(Diffie–Hellman ephemeral)。
+
+**ECDH**：DH过程中，如果将计算过程替换成椭圆曲线的方式，就产生了ECDH（Elliptic-curve Diffie–Hellman）。但是由于DH的非前向安全性，ECDH也具有非前向安全性，目前已经废弃。
+
+**ECDHE**：DHE过程中，如果将计算过程替换成椭圆曲线的方式，就产生了ECDHE(Elliptic-curve Diffie–Hellman ephemeral)。
+
+在DHE/ECDHE算法中，证书的公私钥不再参与密钥交换，只是做为服务端的身份认证。
+承载协商消息变为Server Key Exchange、Client Key Exchange，所以RSA过程并没有这个两次握手。
+	
