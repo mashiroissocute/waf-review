@@ -8,7 +8,9 @@ nav:
         - 防范sqlinject: console/api/sqlinject.md
         - log: console/api/log.md
         - 数据生命周期管理: console/api/lifecycle.md
-      - trpc: index.md     
+        - Gate2.0: console/api/gate2_0.md
+      - trpc: 
+        - 插件设计: console/trpc/plugin.md
     - 接入:
       - 发展历程: access/access.md
       - SAAS-WAF:
@@ -82,7 +84,9 @@ nav:
         - cc防护:
           - 自定义CC: index.md
           - 智能紧急CC: index.md
-        - 网页防篡改: index.md
+        - 网页防篡改: 
+          - 设计: security/basic/antitamper/design.md
+          - srcache: security/basic/antitamper/srcache.md
         - 信息防泄漏: index.md
         - 验证码: index.md
         - 腾讯云DDOS: secury/basic/ddos.md
@@ -154,6 +158,7 @@ nav:
           - 安全组: index.md
           - socket: basic/network/ip/socket.md
           - anycast: basic/network/ip/anycast.md
+        - 报文生产: basic/network/frame.md
       - OS:
         - shell: basic/os/shell.md
 

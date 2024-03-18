@@ -72,3 +72,18 @@ https://learnku.com/articles/41814
 https://blog.csdn.net/zyz770834013/article/details/71486228?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-6.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-6.no_search_link
 - PING6的底层实现：
 https://www.cnblogs.com/qcloud1001/p/12202988.html
+
+
+
+
+### 路由
+路由器接受到ip报文之后，如何根据ipv4或ipv6地转发
+#### ipv4和ipv6路由的区别
+在无类域间路由 (Classless Inter-Domain Routing, CIDR) 情况下，IPv6 中的路由与 IPv4 路由几乎完全相同。唯一的区别在于地址是 128 位 IPv6 地址，而非 32 位 IPv4 地址。通过非常简单的扩展，所有的 IPv4 路由算法，如 OSPF（开放式最短路径优先）、RIP（路由信息协议）、IDRP（域间路由协议）和 IS-IS（中间系统对中间系统），都可以用来路由 IPv6。
+IPv6 还包括可支持功能强大的新路由功能的简单路由扩展。以下是对新路由功能的描述：
+
+- 基于策略、性能、成本等因素选择提供器
+- 主机灵活性，可路由到当前位置
+- 自动重新寻址，可路由到新地址
+
+https://cloud.tencent.com/developer/article/1671821
