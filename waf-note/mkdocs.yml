@@ -66,6 +66,7 @@ nav:
         - 项目总结: hub/summary.md
       - 基础安全:
         - WEB安全:
+          - WEB攻击: security/basic/web/attack.md
           - 规则引擎: index.md
           - AI引擎: index.md
         - 访问控制:
@@ -77,6 +78,7 @@ nav:
         - 网页防篡改: index.md
         - 信息防泄漏: index.md
         - 验证码: index.md
+        - 腾讯云DDOS: secury/basic/ddos.md
       - BOT管理: 
         - 功能设计: 
           - 需求背景: bot/background.md
@@ -103,11 +105,13 @@ nav:
     - TADK : 
       - chapter1: tadk/chapter1.md
     - 基础:
-      - PB : basic/pb.md
-      - Cache : basic/cache.md
+      - 正则表达式: basic/regex/regex.md
+      - PB: basic/pb.md
+      - Cache: basic/cache.md
       - golang:
-        - Lock : basic/lock.md
-        - sync.map : basic/syncmap.md
+        - 包管理: basic/golang/package.md
+        - Lock: basic/golang/lock.md
+        - sync.map: basic/golang/syncmap.md
         - sync.pool: index.md
         - sync.waitgroup: index.md
         - singleflight: index.md
@@ -115,6 +119,7 @@ nav:
         - ants.Pool: index.md
         - defer/panic/recover: basic/golang/panic.md
         - chan: index.md
+        - container: basic/golang/container.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
@@ -122,7 +127,7 @@ nav:
         - 分页算法: basic/mysql/page.md
         - 知识点: basic/mysql/point.md
       - mongo: index.md
-      - kafka: basic/kafka.md
+      - kafka: basic/kafka/kafka.md
       - flink:
         - DatasStreamAPI: basic/flink/datastreamapi.md
         - StateBackEnd: basic/flink/statebackend.md
@@ -134,13 +139,15 @@ nav:
           - HTTP: basic/network/http.md
           - TLS: basic/network/tls.md
           - 回话保持/身份认证: basic/network/cookie_token.md
-          - WebSocket: index.md
+          - 基于HTTP的追加协议: basic/network/http_append.md
         - 连接层协议:
           - TCP: index.md
         - 网络层协议:
           - 安全组: index.md
           - socket: basic/ip/socket.md
           - anycast: basic/ip/anycast.md
+      - OS:
+        - shell: basic/os/shell.md
 
 
 
