@@ -9,13 +9,16 @@ nav:
         - log: console/api/log.md
         - 数据生命周期管理: console/api/lifecycle.md
         - Gate2.0: console/api/gate2_0.md
+        - ssrf: access/api/ssrf.md
+        - fastcgi: access/api/fastcgi.md
       - trpc: 
         - 插件设计: console/trpc/plugin.md
     - 接入:
       - 发展历程: access/access.md
       - SAAS-WAF:
         - DNS: access/saas/dns.md
-        - 四层负载均衡: index.md
+        - 四层负载均衡: 
+          - LVS: access/saas/lb/lvs.md
         - 自研上云:
           - 从1.0到1.5的waf设计: access/saas/group/design.md
           - 组件改造: access/saas/group/rebuild.md
@@ -36,9 +39,6 @@ nav:
           - netfilter: access/saas/sg/netfilter.md
         - TLS版本定制:
           - 需求: access/saas/tls/demand.md
-        - 杂项:
-          - sni: access/saas/others/sni.md
-          - ssrf: access/saas/others/ssrf.md
         - 项目总结: index.md
       - CLB-WAF:
         - 七层负载均衡: index.md
@@ -53,7 +53,14 @@ nav:
         - tce: index.md
       - 接入引擎:
         - NGINX: 
+          - sni: access/engine/nginx/sni.md
           - cache: access/engine/nginx/cache.md
+          - event: access/engine/nginx/event.md
+          - 健康检测: access/engine/nginx/health.md
+          - TLSSessionTicket: access/engine/nginx/tlsst.md
+          - realip: access/engine/nginx/realip.md
+          - limitrate: access/engine/nginx/limitrate.md
+          - 透明代理: access/engine/nginx/transparent.md
         - LUA: 
           - init: access/engine/lua/init.md
           - rewrite: access/engine/lua/rewrite.md
@@ -159,6 +166,7 @@ nav:
           - socket: basic/network/ip/socket.md
           - anycast: basic/network/ip/anycast.md
         - 报文生产: basic/network/frame.md
+        - 交换机和路由器: basic/network/switch_router.md
       - OS:
         - shell: basic/os/shell.md
 

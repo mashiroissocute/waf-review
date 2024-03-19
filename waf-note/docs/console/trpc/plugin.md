@@ -1,8 +1,11 @@
 [TOC]
 ## 核心思想
 tRPC核心框架是采用基于接口编程的思想, 通过把框架功能抽象成一系列的插件组件, 注册到插件工厂, 并由插件工厂实例化插件. tRPC框架负责串联这些插件组件, 拼装出完整的框架功能. 我们可以把插件模型分为以下三层:
+
 1. 框架设计层: 框架只定义标准接口，没有任何插件实现，与平台完全解耦；
+
 2. 插件实现层: 将插件按框架标准接口封装起来即可实现框架插件；
+
 3. 用户使用层: 业务开发只需要引入自己需要的插件即可，按需索取，拿来即用。
 
 
@@ -30,6 +33,7 @@ type Factory interface {
 所有插件需要实现这两个方法，其中比较重要的是Setup方法。
 每个插件需要自己去实现Setup方法，这个方法实现了插件启动的过程。
 Setup方法一般包括了 
+
 - 1.解析和校验配置文件 
 - 2.初始化工作（创建所需资源）
 - 3.注册插件到`trpc提供的标准功能插件 （config, log, filter, codec, selector, transport）`
@@ -81,7 +85,7 @@ func (p *m007Plugin) Setup(name string, decoder plugin.Decoder) error {
 ```
 因为很多插件都是注册到trpc提供的标准功能插件 （config, log, filter, codec, selector, transport）中，所以有必要对标准功能插件进行一些讲解。
 ## 标准功能插件
-![enter image description here](/tencent/api/attachments/s3/url?attachmentid=4872830)
+![alt text](image.png)
 如图所示，是一个RPC框架完成一次RPC服务所要经历的流程。
 该流程中需要使用到selector的服务发现、负载均衡、服务注册，发起请求和收到响应的filter，发起请求和收到请求的序列化和反序列化Codec，发送和接受网络数据的Transport，以及使用过程中的日志log和配置config。
 这些组件是RPC框架所必须的，因此trpc如果要能够使用，必须要完成这些组件的一种默认实现方式。
@@ -92,7 +96,7 @@ trpc针对RPC框架中必要的部分提供了扩展能力。
 拦截器原理关键点在于拦截器的 `功能`  以及  `顺序` 。
 功能：拦截器可以拦截到接口的请求和响应，并对请求，响应，上下文进行处理（用通俗的语言阐述也就是 可以在 `请求接受前` 做一些事情， `请求处理后` 做一些事情），因此，拦截器从功能上说是分为两个部分的 前置（业务逻辑处理前） 和 后置（业务逻辑处理后）。
 顺序：如下图所示，拦截器是有明确的顺序性，根据拦截器的注册顺序依次执行前置部分逻辑，并逆序执行拦截器的后置部分。
-![enter image description here](/tencent/api/attachments/s3/url?attachmentid=4872831)
+![alt text](image-1.png)
 拦截器分为客户端拦截器和服务端拦截器
 客户端拦截器是对rpc框架在`发起调用和收到响应`前后执行的动作
 服务端拦截器是对rpc框架在`收到请求和返回响应`前后执行的动作
@@ -100,6 +104,7 @@ trpc针对RPC框架中必要的部分提供了扩展能力。
 https://iwiki.woa.com/pages/viewpage.action?pageId=274914183
 
 #### Filter包：
+
 - handlerFunc是业务逻辑处理，作为filter的最里层。
 客户端的handlerFunc为callFunc，内部包括codec打解包，transport网络通信，以该函数前后为拦截器入口。
 ``` 
@@ -129,6 +134,7 @@ func Register(name string, serverFilter Filter, clientFilter Filter) {
 }
 ```
 #### Filter的调用入口：
+
 - client ：
 每个client需要有Invoke方法，Options结构体中存在filter.Chain（[]filter）成员，filter.Chain有handle方法。
 ``` 
@@ -156,6 +162,7 @@ func (fc Chain) Handle(ctx context.Context, req, rsp interface{}, f HandleFunc) 
 }
 ```
 #### Filter例子：007上报
+
 - 注册 
 在007插件的Setup中，执行了
 `filter.Register(name, PassiveModuleCallServerFilter, ActiveModuleCallClientFilter)`
@@ -202,13 +209,18 @@ func ActiveModuleCallClientFilter(ctx context.Context, req, rsp interface{}, han
 ### Metric插件实现和调用方法
 结合logging、metrics、tracing三大件有助于我们建立起一个更加全面的监控体系。这里是Metric
 #### 常见的mertric
+
 - 模调上报 （基于filter实现，详情见007filter）
+```
 	- 作为服务端，发响应到上游的时候，上报整个调用信息（主调和被调信息，回包的状态码，耗时等）
 	- 作为客户端，收到下游回包的时候，上报整个调用信息（主调和被调信息，回包的状态码，耗时等）
+```
 - 属性上报 （基于metric实现）
+```
 	- 积累量（请求次数..）
 	- 时刻量（QPS..）
 	- 多维监控项
+```
 #### Metric包：
 Metric包实现了一些常用的监控项，比如counter计数器，Gauge当前值，Timer时间花销，Histogram直方图。
 counter有增加和减少的操作
@@ -219,6 +231,7 @@ Histogram有增加sample的操作
 #### runtime Metric插件
 代码 ：`git.code.oa.com/trpc-go/trpc-metrics-runtime`
 指标 ：
+
 - golang协程数，线程数，CPU核心数
 - 磁盘使用情况，内存使用情况，cpu使用情况
 - 进程数，打开文件数
@@ -228,6 +241,7 @@ Histogram有增加sample的操作
 结合logging、metrics、tracing三大件有助于我们建立起一个更加全面的监控体系。这里是Tracing
 #### pspanID，spanID和tracingID
 https://cloud.tencent.com/developer/article/1832719
+
 - tracingID会在所有服务中传递，并且不会改变
 - spanID是当前服务生成的ID，pspanID是当前服务的上游服务生成的ID。
 
