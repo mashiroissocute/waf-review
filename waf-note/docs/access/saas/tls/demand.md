@@ -41,7 +41,7 @@
 ![alt text](image-3.png)
 
 
-##当前问题
+## 当前问题
 `ssl_protocols在当前nginx中作为全局的配置，在default_server和http（server优先于http）中生效。在不同的server块中配置ssl_protocols，是无法满足域名维度定制TLS版本的。`
 
 ## 解决方案

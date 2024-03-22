@@ -16,6 +16,7 @@ https://blog.csdn.net/a3192048/article/details/84715996
 https://zhuanlan.zhihu.com/p/55240680
 可以自己指定resolver，比如nginx的resolver配置，这resolver是本地dns代理。这个resolver一般是自有DNS服务器或者公共DNS服务器。
 如果不指定默认是运营商就近提供的。
+local DNS 默认是运营商DNS服务器
 
 ### 智能DNS解析
 传统的DNS解析，根据域名返回IP，当用户配置多个A记录时，随机返回IP。
@@ -32,3 +33,18 @@ https://zhuanlan.zhihu.com/p/55240680
 这种问题，通过ecs协议解决。https://help.aliyun.com/document_detail/29730.html
 https://www.sohu.com/a/292809721_495675
 公共DNS服务器，基于clientip，来指定地域或者运营商。
+
+
+### IGTM
+DNS IP探测，智能调度
+![alt text](image-1.png)
+
+
+### DNS生效时间
+DNS记录修改后，生效时间主要由本地DNS代理控制：
+「腾讯DNSPod是权威DNS服务器，在DNSPod中变更解析记录是秒级生效的。但是因为本地DNS代理会缓存域名的解析结果，当用户访问域名时，如果本地DNS缓存未到期，是不会向DNSPod请求最新的解析记录，而是直接将之前缓存的解析结果返回给客户，所以修改/删除/暂停记录的解析生效时间需要等到客户端本地DNS的缓存过期」
+
+如何缩短本地DNS代理缓存时间：
+「修改DNS解析记录时，缩小记录的TTL。本地dns代理会基于该TTL决定缓存的过期时间。部分本地dns会忽略记录的TTL」
+![alt text](image-2.png)
+

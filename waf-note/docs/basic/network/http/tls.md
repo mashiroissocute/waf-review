@@ -92,3 +92,65 @@ TLS握手的目的之一是基于非对称加密以及证书机制协商一个�
 在DHE/ECDHE算法中，证书的公私钥不再参与密钥交换，只是做为服务端的身份认证。
 承载协商消息变为Server Key Exchange、Client Key Exchange，所以RSA过程并没有这个两次握手。
 	
+
+
+
+
+## SSL/TLS背景
+### SSLv2、SSLv3、TLSv1
+SSLv1.0，1994年提出，该方案第一次解决了安全传输的问题。
+SSLv2.0，1995年发布，于2011年被弃用。
+SSLv3.0，1996年发布，被大规模应用，于2015年弃用。
+
+1999年改名叫TLSv1，和SSLv3.0相比几乎没有做什么改动。
+
+TLS v1.1， 2006年发布，修复了一些bug，支持更多参数。
+TLS v1.2， 2008年发布，做了更多的扩展和算法改进，是目前几乎所有设备的标配。
+TLS v1.3，2014年提出，改善了握手流程，减少了时延，并采用完全前向安全的密钥交换算法。
+
+#### 为什么TLS版本一直在迭代？
+通过新的版本迭代来提供新特性和更好的安全性。
+例如：一些关于TLS/SSL协议中的漏洞，
+
+- POODLE（Padding Oracle On Downgraded Legacy Encryption）,(CVE-2014-3566)
+- BEAST（Browser Exploit Against SSL/TLS ）(CVE-2011-3389)
+- CRIME (Compression Ratio Info-leak Made Easy) (CVE-2012-4929)
+- BREACH（Browser Reconnaissance and Exfiltration via Adaptive Compression of Hypertext） (CVE-2013-3587.)
+- Heartbleed (CVE-2014-0160.)
+
+都能在版本迭代中得以解决。
+
+
+#### 为什么TLS1.2或TLS1.3存在不向前兼容的加密套件
+
+- 一方面安全性较弱的加密套件容易被攻击，因此加入了安全性更高的加密套件。
+- 另一方面TLS版本迭代，对加密套件也有了要求。部分老旧的加密套件无法满足当前版本的加密需求。
+比如：TLS 1.3移除了已经过时的对称加密算法，剩余的都是带有关联数据的认证加密(AEAD)型算法。移除静态RSA和DH加密套件，所有基于公钥的密钥交换机制都提供前向安全保证。
+
+WAF-NGINX使用的OPENSSL1.1.1g版本中，TLS1.2比TLS1.1和1.0多了部分特定的加密套件，TLS1.3加密套件不向前兼容.
+
+
+#### 加密套件
+加密套件分为四个部分
+
+Kx = Key Exchange 密钥交换算法（非对称）：用于利用服务器公钥加密premaster key。并且不同的密钥交换算法，有不同的premaster key生产方式。
+
+Au = Authentication 身份认证算法（非对称）：用于利用CA公钥加密HASH VALUE后与证书签名对比，从而验证证书的有效性。
+
+Enc = Encrypt：对称加密
+
+Mac = Message Authentication Code 摘要算法
+非对称算法是RSA的时候，可以省略
+
+![alt text](image-6.png)
+
+
+
+### SSL/TLS握手流程
+#### TLS1.2及以下
+https://iwiki.woa.com/pages/viewpage.action?pageId=1467769161
+#### TLS1.3
+https://blog.csdn.net/qq_31442743/article/details/111666786
+- TLS1.3舍弃了RSA的密钥交换过程，基于ECDH的算法优化了整个过程。
+并且基于key_share扩展，减少了密钥协商次数。从2RTT减少为1RTT。
+- TLS1.3在会话恢复上，直接发送加密的earlydata。做到0RTT。

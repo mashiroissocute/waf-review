@@ -39,10 +39,12 @@ nav:
           - netfilter: access/saas/sg/netfilter.md
         - TLS版本定制:
           - 需求: access/saas/tls/demand.md
+          - 技术方案: access/saas/tls/tech.md
+          - 国密证书: access/saas/tls/gm.md
         - 项目总结: index.md
       - CLB-WAF:
         - 七层负载均衡: index.md
-        - 负载均衡接入WAF: index.md
+        - 负载均衡接入WAF: access/clb/clbwaf.md
         - 项目总结: index.md
       - WX-WAF:
         - 小程序/Donut/WAF: access/wx/miniprogram.md
@@ -51,6 +53,7 @@ nav:
         - 茶百道: access/wx/chabaidao.md
       - TCE-WAF:
         - tce: index.md
+      - 腾讯云网络: access/net/tencentcloudnet.md
       - 接入引擎:
         - NGINX: 
           - sni: access/engine/nginx/sni.md
@@ -61,6 +64,7 @@ nav:
           - realip: access/engine/nginx/realip.md
           - limitrate: access/engine/nginx/limitrate.md
           - 透明代理: access/engine/nginx/transparent.md
+          - 单端口提供HTTP和HTTPS服务: access/engine/nginx/httpwithhttps.md  
         - LUA: 
           - init: access/engine/lua/init.md
           - rewrite: access/engine/lua/rewrite.md
@@ -95,6 +99,7 @@ nav:
           - 设计: security/basic/antitamper/design.md
           - srcache: security/basic/antitamper/srcache.md
         - 信息防泄漏: index.md
+        - 资源防盗链: sercurity/basic/antilink/antilink.md
         - 验证码: index.md
         - 腾讯云DDOS: secury/basic/ddos.md
       - BOT管理: 
@@ -169,6 +174,7 @@ nav:
         - 交换机和路由器: basic/network/switch_router.md
       - OS:
         - shell: basic/os/shell.md
+        - strace: basic/os/strace.md
 
 
 
