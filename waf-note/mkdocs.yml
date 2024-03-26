@@ -65,6 +65,7 @@ nav:
           - limitrate: access/engine/nginx/limitrate.md
           - 透明代理: access/engine/nginx/transparent.md
           - 单端口提供HTTP和HTTPS服务: access/engine/nginx/httpwithhttps.md  
+          - proxy_protocol: access/engine/nginx/proxyprotocol.md
         - LUA: 
           - init: access/engine/lua/init.md
           - rewrite: access/engine/lua/rewrite.md
