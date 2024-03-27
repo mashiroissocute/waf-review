@@ -31,6 +31,7 @@ nav:
           - 沙箱策略: access/saas/limit/sandbox.md
           - 单机过载保护: access/saas/limit/rslimit.md
           - 一键bypass: access/saas/limit/bypass.md
+          - ipset-cc: access/saas/limit/ipsetcc.md
         - IPV6: 
           - 技术方案: access/saas/ipv6/method.md
           - 知识栈: access/saas/ipv6/ipv6stack.md
@@ -41,7 +42,10 @@ nav:
           - 需求: access/saas/tls/demand.md
           - 技术方案: access/saas/tls/tech.md
           - 国密证书: access/saas/tls/gm.md
-        - 项目总结: index.md
+          - 加密套件优先级: access/saas/tls/priority.md
+          - 加密套件身份认证: access/saas/tls/auth.md
+        - 热加载:
+          - 实现方案: access/saas/hotload/method.md
       - CLB-WAF:
         - 七层负载均衡: index.md
         - 负载均衡接入WAF: access/clb/clbwaf.md
@@ -66,6 +70,9 @@ nav:
           - 透明代理: access/engine/nginx/transparent.md
           - 单端口提供HTTP和HTTPS服务: access/engine/nginx/httpwithhttps.md  
           - proxy_protocol: access/engine/nginx/proxyprotocol.md
+          - http配置解析: access/engine/nginx/httpconfig.md
+          - 共享内存: access/engine/nginx/shm.md
+          - 正则匹配: access/engine/nginx/regex.md
         - LUA: 
           - init: access/engine/lua/init.md
           - rewrite: access/engine/lua/rewrite.md
@@ -89,7 +96,7 @@ nav:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
           - 规则引擎: index.md
-          - AI引擎: index.md
+          - AI引擎: security/basic/web/ai.md
         - 访问控制:
           - 地域封禁: index.md
           - 自定义规则: index.md
@@ -100,8 +107,8 @@ nav:
           - 设计: security/basic/antitamper/design.md
           - srcache: security/basic/antitamper/srcache.md
         - 信息防泄漏: index.md
-        - 资源防盗链: sercurity/basic/antilink/antilink.md
-        - 验证码: index.md
+        - 资源防盗链: security/basic/antilink/antilink.md
+        - 验证码: security/basic/captcha/captcha.md
         - 腾讯云DDOS: secury/basic/ddos.md
       - BOT管理: 
         - 功能设计: 
@@ -117,17 +124,19 @@ nav:
       - API安全:
         - API安全: index.md
         - API限流: index.md
+      - research: 
+        - 基于DL的Payload检测: security/research/dl.md
+        - 基于DNN的cc检测: security/research/dnn.md
+        - 基于GD的SVM模型推导: security/research/svm.md
     - 日志:
       - lua上传日志: logs/lua.md
-      - log-syncer: index.md
+      - kafka: 
+        - producer: logs/producer.md
+        - consumer: logs/consumer.md
       - ElasticSearch:
         - ES: index.md
       - ClickHouse:
         - CK: index.md
-      - KafKa:
-        - kafka: index.md
-    - TADK : 
-      - chapter1: tadk/chapter1.md
     - 基础:
       - 正则表达式: basic/regex/regex.md
       - PB: basic/pb.md
@@ -144,12 +153,14 @@ nav:
         - defer/panic/recover: basic/golang/panic.md
         - chan: index.md
         - container: basic/golang/container.md
+        - make/new: basic/golang/make_new.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
       - mysql: 
         - 分页算法: basic/mysql/page.md
         - metadatalock: basic/mysql/metadatalock.md
+        - 触发器: basic/mysql/trigger.md
         - 知识点: basic/mysql/point.md
       - mongo: index.md
       - kafka: basic/kafka/kafka.md
@@ -158,6 +169,8 @@ nav:
         - StateBackEnd: basic/flink/statebackend.md
       - docker:
         - useage: basic/docker/useage.md
+        - 容器背景: basic/docker/background.md
+        - 容器技术: basic/docker/tech.md
       - git: basic/git/useage.md
       - 网络:
         - 应用层协议:
@@ -176,7 +189,14 @@ nav:
       - OS:
         - shell: basic/os/shell.md
         - strace: basic/os/strace.md
-
+        - crontab: basic/os/crontab.md
+      - bigData:
+        - HDFS: basic/bigData/hdfs.md
+        - mapReduce: basic/bigData/mapreduce.md
+        - yarn: basic/bigData/yarn.md
+        - hive: basic/bigData/hive.md
+        - spark: basic/bigData/spark.md
+      - ES: basic/es/useage.md
 
 
 theme:
