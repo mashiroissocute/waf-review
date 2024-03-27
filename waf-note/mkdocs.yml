@@ -26,6 +26,7 @@ nav:
           - 性能和成本: access/saas/group/performance.md
           - tke: access/saas/group/tke.md
         - 过载保护:
+          - 135项目: access/saas/limit/135.md
           - 统计: access/saas/limit/count.md
           - 带宽限速: access/saas/limit/bandlimit.md
           - 沙箱策略: access/saas/limit/sandbox.md
@@ -60,6 +61,7 @@ nav:
       - 腾讯云网络: access/net/tencentcloudnet.md
       - 接入引擎:
         - NGINX: 
+          - 编译: access/engine/nginx/compile.md
           - sni: access/engine/nginx/sni.md
           - cache: access/engine/nginx/cache.md
           - event: access/engine/nginx/event.md
@@ -145,6 +147,7 @@ nav:
         - 包管理: basic/golang/package.md
         - Lock: basic/golang/lock.md
         - sync.map: basic/golang/syncmap.md
+        - sync.mutex: basic/golang/syncmutex.md
         - sync.pool: index.md
         - sync.waitgroup: index.md
         - singleflight: index.md
@@ -154,6 +157,13 @@ nav:
         - chan: index.md
         - container: basic/golang/container.md
         - make/new: basic/golang/make_new.md
+        - rune: basic/golang/rune.md
+        - select: basic/golang/select.md
+        - assert: basic/golang/assert.md
+        - string/slice: basic/golang/string_slice.md
+        - 垃圾回收: basic/golang/gc.md
+        - 栈内存管理: basic/golang/stack.md
+        - 堆内存管理: basic/golang/heap.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
@@ -190,6 +200,7 @@ nav:
         - shell: basic/os/shell.md
         - strace: basic/os/strace.md
         - crontab: basic/os/crontab.md
+        - 并发模型: basic/os/concurrency.md
       - bigData:
         - HDFS: basic/bigData/hdfs.md
         - mapReduce: basic/bigData/mapreduce.md
@@ -197,7 +208,8 @@ nav:
         - hive: basic/bigData/hive.md
         - spark: basic/bigData/spark.md
       - ES: basic/es/useage.md
-
+    - 问题排查:
+      - cpu100问题: problem/cpu100.md
 
 theme:
   name: material
