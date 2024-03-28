@@ -164,6 +164,7 @@ nav:
         - 垃圾回收: basic/golang/gc.md
         - 栈内存管理: basic/golang/stack.md
         - 堆内存管理: basic/golang/heap.md
+        - reflect: basic/golang/reflect.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
