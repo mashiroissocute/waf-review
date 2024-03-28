@@ -146,6 +146,7 @@ nav:
       - golang:
         - 包管理: basic/golang/package.md
         - Lock: basic/golang/lock.md
+        - map: basic/golang/map.md
         - sync.map: basic/golang/syncmap.md
         - sync.mutex: basic/golang/syncmutex.md
         - sync.pool: index.md
@@ -154,7 +155,7 @@ nav:
         - benchmark: index.md
         - ants.Pool: index.md
         - defer/panic/recover: basic/golang/panic.md
-        - chan: index.md
+        - chan: baic/golang/chan.md
         - container: basic/golang/container.md
         - make/new: basic/golang/make_new.md
         - rune: basic/golang/rune.md
@@ -165,6 +166,7 @@ nav:
         - 栈内存管理: basic/golang/stack.md
         - 堆内存管理: basic/golang/heap.md
         - reflect: basic/golang/reflect.md
+        - 协程生命周期: basic/golang/goroutinelifecycle.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
@@ -174,7 +176,9 @@ nav:
         - 触发器: basic/mysql/trigger.md
         - 知识点: basic/mysql/point.md
       - mongo: index.md
-      - kafka: basic/kafka/kafka.md
+      - kafka: 
+        - backgroud: basic/kafka/kafka.md
+        - 技术细节: basic/kafka/tech.md
       - flink:
         - DatasStreamAPI: basic/flink/datastreamapi.md
         - StateBackEnd: basic/flink/statebackend.md
@@ -202,6 +206,7 @@ nav:
         - strace: basic/os/strace.md
         - crontab: basic/os/crontab.md
         - 并发模型: basic/os/concurrency.md
+        - 同步互斥: basic/os/sync.md
       - bigData:
         - HDFS: basic/bigData/hdfs.md
         - mapReduce: basic/bigData/mapreduce.md
