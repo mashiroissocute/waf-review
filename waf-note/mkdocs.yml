@@ -11,6 +11,8 @@ nav:
         - Gate2.0: console/api/gate2_0.md
         - ssrf: access/api/ssrf.md
         - fastcgi: access/api/fastcgi.md
+        - 服务票据: access/api/ticket.md
+        - 程序可观测性: access/api/observability.md
       - trpc: 
         - 插件设计: console/trpc/plugin.md
     - 接入:
@@ -59,6 +61,7 @@ nav:
       - TCE-WAF:
         - tce: index.md
       - 腾讯云网络: access/net/tencentcloudnet.md
+      - EdgeOne: access/edgeone/edgeone.md
       - 接入引擎:
         - NGINX: 
           - 编译: access/engine/nginx/compile.md
@@ -144,6 +147,7 @@ nav:
       - PB: basic/pb.md
       - Cache: basic/cache.md
       - golang:
+        - 基本类型: basic/golang/type.md
         - 包管理: basic/golang/package.md
         - Lock: basic/golang/lock.md
         - map: basic/golang/map.md
@@ -167,6 +171,14 @@ nav:
         - 堆内存管理: basic/golang/heap.md
         - reflect: basic/golang/reflect.md
         - 协程生命周期: basic/golang/goroutinelifecycle.md
+        - log: basic/golang/log.md
+        - 信号量: basic/golang/semaphore.md
+        - 源码:
+          - m0/g0: basic/golang/sourcecode/m0_g0.md
+          - 创建maing: basic/golang/sourcecode/maing.md
+          - 运行maing: basic/golang/sourcecode/runmaing.md
+          - 运行normalg: basic/golang/sourcecode/runnormalg.md
+          - runtime通用函数: bacic/golang/sourcecode/runtime.md
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
@@ -207,13 +219,19 @@ nav:
         - crontab: basic/os/crontab.md
         - 并发模型: basic/os/concurrency.md
         - 同步互斥: basic/os/sync.md
+        - 芯片架构: basic/os/arch.md
       - bigData:
         - HDFS: basic/bigData/hdfs.md
         - mapReduce: basic/bigData/mapreduce.md
         - yarn: basic/bigData/yarn.md
         - hive: basic/bigData/hive.md
         - spark: basic/bigData/spark.md
-      - ES: basic/es/useage.md
+      - ES: 
+        - 使用: basic/es/useage.md
+        - 基础: basic/es/es.md
+        - 索引: basic/es/index.md
+      - clickhouse: 
+        - 基础: basic/clickhouse/clickhouse.md
     - 问题排查:
       - cpu100问题: problem/cpu100.md
 
