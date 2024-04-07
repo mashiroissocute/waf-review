@@ -21,6 +21,8 @@ nav:
         - DNS: access/saas/dns.md
         - 四层负载均衡: 
           - LVS: access/saas/lb/lvs.md
+          - IPIP-GRE: access/saas/lb/ipipgre.md
+          - tvs-ko: access/saas/lb/tvs-ko.md
         - 自研上云:
           - 从1.0到1.5的waf设计: access/saas/group/design.md
           - 组件改造: access/saas/group/rebuild.md
@@ -44,7 +46,7 @@ nav:
         - TLS版本定制:
           - 需求: access/saas/tls/demand.md
           - 技术方案: access/saas/tls/tech.md
-          - 国密证书: access/saas/tls/gm.md
+          - 证书: access/saas/tls/gm.md
           - 加密套件优先级: access/saas/tls/priority.md
           - 加密套件身份认证: access/saas/tls/auth.md
         - 热加载:
@@ -78,12 +80,21 @@ nav:
           - http配置解析: access/engine/nginx/httpconfig.md
           - 共享内存: access/engine/nginx/shm.md
           - 正则匹配: access/engine/nginx/regex.md
+          - 架构: access/engine/nginx/arch.md
+          - 架构-1: access/engine/nginx/arch1.md
+          - http模块: access/engine/nginx/http.md
+          - 连接池内存池: access/engine/nginx/pool.md
         - LUA: 
           - init: access/engine/lua/init.md
           - rewrite: access/engine/lua/rewrite.md
           - access: access/engine/lua/access.md
           - filter: access/engine/lua/filter.md
           - log: access/engine/lua/log.md
+        - openresty: 
+          - basic: acess/engine/openresty/openresty.md
+          - luajit: access/engine/openresty/luajit.md
+          - api: access/engine/openresty/api.md
+          - 线程模型: access/engine/openresty/thread.md
     - 防护:
       - HUB:
         - 设计: hub/desgin.md
@@ -120,6 +131,7 @@ nav:
           - 需求背景: bot/background.md
           - 功能细化: bot/feature.md
           - 架构设计: bot/desgin.md
+          - 体验: bot/use.md
         - 功能实现:
           - BOT特征提取: bot/botfeature.md
           - BOT执行器: bot/botexecutor.md
@@ -148,7 +160,8 @@ nav:
       - Cache: basic/cache.md
       - golang:
         - 基本类型: basic/golang/type.md
-        - 包管理: basic/golang/package.md
+        - 包管理: basic/golang/package.
+        - 版本管理: basic/golang/version.md
         - Lock: basic/golang/lock.md
         - map: basic/golang/map.md
         - sync.map: basic/golang/syncmap.md
@@ -173,6 +186,7 @@ nav:
         - 协程生命周期: basic/golang/goroutinelifecycle.md
         - log: basic/golang/log.md
         - 信号量: basic/golang/semaphore.md
+        - 证书: basic/golang/cert.md
         - 源码:
           - m0/g0: basic/golang/sourcecode/m0_g0.md
           - 创建maing: basic/golang/sourcecode/maing.md
@@ -182,10 +196,14 @@ nav:
       - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
+        - 使用场景: basic/redis/useage.md
+        - 深入: basic/redis/deep.md
+        - 分布式锁: basic/redis/lock.md
       - mysql: 
         - 分页算法: basic/mysql/page.md
         - metadatalock: basic/mysql/metadatalock.md
         - 触发器: basic/mysql/trigger.md
+        - 执行一条mysql发生了什么: basic/mysql/step.md
         - 知识点: basic/mysql/point.md
       - mongo: index.md
       - kafka: 
@@ -205,6 +223,7 @@ nav:
           - TLS: basic/network/http/tls.md
           - 回话保持/身份认证: basic/network/http/cookie_token.md
           - 基于HTTP的追加协议: basic/network/http/http_append.md
+          - 长链接: baisc/network/http/keepalive.md
         - 连接层协议:
           - TCP: index.md
         - 网络层协议:
@@ -220,6 +239,8 @@ nav:
         - 并发模型: basic/os/concurrency.md
         - 同步互斥: basic/os/sync.md
         - 芯片架构: basic/os/arch.md
+        - gdb: basic/os/gdb.md
+        - cow: baisc/os/cow.md
       - bigData:
         - HDFS: basic/bigData/hdfs.md
         - mapReduce: basic/bigData/mapreduce.md
@@ -234,6 +255,7 @@ nav:
         - 基础: basic/clickhouse/clickhouse.md
     - 问题排查:
       - cpu100问题: problem/cpu100.md
+      - coredump问题: problem/coredump.md
 
 theme:
   name: material

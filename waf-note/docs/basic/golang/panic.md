@@ -37,6 +37,15 @@ DBTx.Commit() // 提交DB成功
 - defer链表中的节点是defer结构体，其中有该defer是否执行的标志/函数的入口/参数/指向下一个defer结构体的link指针。
 - 创建defer结构体时，会将涉及到的变量进行值拷贝放入堆中。在调用defer注册的函数时，又会将该值拷贝到栈中。
 
+
+
+#### 过程
+goroutine有一个_defer链表
+链表中的元素是defer结构体，结构体成员包含函数指针，函数参数。这些结构体都放在堆上。
+每遇到一个defer，就构造defer结构体，头插_defer链表。
+在函数执行完后，找到_defer链表，将函数参数拷贝到栈上并通过函数指针调用函数
+
+
 ### 3. panic recover
 - panic会停掉当前正在执行的程序（注意，不只是协程），但是与 `os.Exit(-1)` 直接退出程序不同，panic会先处理完当前goroutine已经defer挂上去的任务，执行完毕后，输出panic信息再退出整个程序。
 -  `panic执行，且只执行，当前goroutine的defer`。当前goroutine中的所有defer都会执行，即使是在goroutine的函数调用中panic了：
