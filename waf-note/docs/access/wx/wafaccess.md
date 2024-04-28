@@ -32,3 +32,20 @@ https://dev.weixin.qq.com/docs/gateway/quickstart.html
 * 然后WAF实现了第三方平台，用户授权后，帮助用户将小程序自动接入到Donut网关和WAF中。
 
 
+
+### 一键接入技术细节
+
+
+#### 第三方平台
+在第三方平台创建审核通过后，微信服务器会向其 ”授权事件接收URL” 每隔 10 分钟以 POST 的方式推送 component_verify_ticket。
+目前，waf第三方平台的component_verify_ticket存放在DB中，定时更新。需要使用component_verify_ticket的时候，直接从DB中读取。
+![alt text](image-4.png)
+
+该ticket用于生成ComponentAccessToken.
+
+#### 扫码授权
+用户扫描WAF第三方平台专属二维码，授权waf三方平台操作用户小程序。
+之后waf会得到一个auth_code。该code是授权信息。
+
+#### 自动接入
+调用网关自动接入的接口，将用户小程序接入到WAF的网关。

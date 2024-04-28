@@ -4,6 +4,7 @@ nav:
   - top sales: sales/topsales.md
   - v2ray: vpn/v2ray.md
   - shadowsock: vpn/ss.md
+  - 卖课freqtrade: money/freqtrade.md
    
 
 theme:

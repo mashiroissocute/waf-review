@@ -2,17 +2,16 @@ site_name: WAF
 use_directory_urls: True
 nav:
     - 概览: index.md
-    - 未完成整理: todo.md
     - 控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
         - log: console/api/log.md
         - 数据生命周期管理: console/api/lifecycle.md
         - Gate2.0: console/api/gate2_0.md
-        - ssrf: access/api/ssrf.md
-        - fastcgi: access/api/fastcgi.md
-        - 服务票据: access/api/ticket.md
-        - 程序可观测性: access/api/observability.md
+        - ssrf: console/api/ssrf.md
+        - fastcgi: console/api/fastcgi.md
+        - 服务票据: console/api/ticket.md
+        - 程序可观测性: console/api/observability.md
       - trpc: 
         - 插件设计: console/trpc/plugin.md
     - 接入:
@@ -43,7 +42,7 @@ nav:
         - 安全组:
           - 一键放通: access/saas/sg/auto.md
           - netfilter: access/saas/sg/netfilter.md
-        - TLS版本定制:
+        - TLS定制:
           - 需求: access/saas/tls/demand.md
           - 技术方案: access/saas/tls/tech.md
           - 证书: access/saas/tls/gm.md
@@ -52,16 +51,14 @@ nav:
         - 热加载:
           - 实现方案: access/saas/hotload/method.md
       - CLB-WAF:
-        - 七层负载均衡: index.md
         - 负载均衡接入WAF: access/clb/clbwaf.md
-        - 项目总结: index.md
       - WX-WAF:
         - 小程序/Donut/WAF: access/wx/miniprogram.md
         - Donut接入WAF: access/wx/wafaccess.md
         - 项目总结: access/wx/summary.md
         - 茶百道: access/wx/chabaidao.md
       - TCE-WAF:
-        - tce: index.md
+        - tce: access/saas/tce/tce.md
       - 腾讯云网络: access/net/tencentcloudnet.md
       - EdgeOne: access/edgeone/edgeone.md
       - 接入引擎:
@@ -80,9 +77,8 @@ nav:
           - http配置解析: access/engine/nginx/httpconfig.md
           - 共享内存: access/engine/nginx/shm.md
           - 正则匹配: access/engine/nginx/regex.md
-          - 架构: access/engine/nginx/arch.md
-          - 架构-1: access/engine/nginx/arch1.md
-          - http模块: access/engine/nginx/http.md
+          - 架构第一章: access/engine/nginx/arch.md
+          - 架构第二章: access/engine/nginx/arch1.md
           - 连接池内存池: access/engine/nginx/pool.md
         - LUA: 
           - init: access/engine/lua/init.md
@@ -91,7 +87,7 @@ nav:
           - filter: access/engine/lua/filter.md
           - log: access/engine/lua/log.md
         - openresty: 
-          - basic: acess/engine/openresty/openresty.md
+          - basic: access/engine/openresty/openresty.md
           - luajit: access/engine/openresty/luajit.md
           - api: access/engine/openresty/api.md
           - 线程模型: access/engine/openresty/thread.md
