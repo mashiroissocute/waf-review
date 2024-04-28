@@ -103,6 +103,9 @@ nav:
           - ballast: index.md
         - monitor: 
           - pprof: index.md
+        - json: security/hub/json.md
+        - ants.Pool: index.md
+        - benchmark: index.md
         - 项目总结: hub/summary.md
       - 基础安全:
         - WEB安全:
@@ -134,6 +137,8 @@ nav:
           - BOTAI执行器: bot/botaiexecutor.md
         - 其他思路:
           - 科恩实验室: bot/keen.md
+        - 技术相关: 
+          - flink构建ClickHouse实时数仓: bot/tech/flink_clickhouse.md
       - API安全:
         - API安全: index.md
         - API限流: index.md
@@ -144,31 +149,29 @@ nav:
     - 日志:
       - lua上传日志: logs/lua.md
       - kafka: 
-        - producer: logs/producer.md
-        - consumer: logs/consumer.md
-      - ElasticSearch:
-        - ES: index.md
-      - ClickHouse:
-        - CK: index.md
+        - producer: logs/kafka/producer.md
+        - consumer: logs/kafka/consumer.md
+      - elasticsearch: 
+        - 使用: basic/es/useage.md
+        - 基础: basic/es/es.md
+        - 索引: basic/es/index.md
+      - clickhouse: 
+        - 基础: basic/clickhouse/clickhouse.md
     - 基础:
       - 正则表达式: basic/regex/regex.md
       - PB: basic/pb.md
       - Cache: basic/cache.md
       - golang:
         - 基本类型: basic/golang/type.md
-        - 包管理: basic/golang/package.
-        - 版本管理: basic/golang/version.md
-        - Lock: basic/golang/lock.md
+        - 包管理: basic/golang/package.md
+        - 版本管理: basic/golang/goversion.md
+        - lock: basic/golang/lock.md
         - map: basic/golang/map.md
         - sync.map: basic/golang/syncmap.md
-        - sync.mutex: basic/golang/syncmutex.md
-        - sync.pool: index.md
-        - sync.waitgroup: index.md
-        - singleflight: index.md
-        - benchmark: index.md
-        - ants.Pool: index.md
+        - sync.pool: basic/golang/syncpool.md
+        - sync.waitgroup: basic/golang/syncwaitgroup.md
         - defer/panic/recover: basic/golang/panic.md
-        - chan: baic/golang/chan.md
+        - chan: basic/golang/chan.md
         - container: basic/golang/container.md
         - make/new: basic/golang/make_new.md
         - rune: basic/golang/rune.md
@@ -189,7 +192,6 @@ nav:
           - 运行maing: basic/golang/sourcecode/runmaing.md
           - 运行normalg: basic/golang/sourcecode/runnormalg.md
           - runtime通用函数: bacic/golang/sourcecode/runtime.md
-      - json: hub/json.md
       - redis:
         - pipeline: basic/redis/pipeline.md
         - 使用场景: basic/redis/useage.md
@@ -201,7 +203,8 @@ nav:
         - 触发器: basic/mysql/trigger.md
         - 执行一条mysql发生了什么: basic/mysql/step.md
         - 知识点: basic/mysql/point.md
-      - mongo: index.md
+      - mongo: 
+        - useage: basic/mongo/useage.md
       - kafka: 
         - backgroud: basic/kafka/kafka.md
         - 技术细节: basic/kafka/tech.md
@@ -213,20 +216,19 @@ nav:
         - 容器背景: basic/docker/background.md
         - 容器技术: basic/docker/tech.md
       - git: basic/git/useage.md
-      - 网络:
+      - network:
         - 应用层协议:
           - HTTP: basic/network/http/http.md
           - TLS: basic/network/http/tls.md
           - 回话保持/身份认证: basic/network/http/cookie_token.md
           - 基于HTTP的追加协议: basic/network/http/http_append.md
-          - 长链接: baisc/network/http/keepalive.md
         - 连接层协议:
-          - TCP: index.md
+          - 长链接: basic/network/tcp/keepalive.md
+          - socket: basic/network/tcp/socket.md
         - 网络层协议:
-          - 安全组: index.md
-          - socket: basic/network/ip/socket.md
+          - 安全组: access/saas/sg/netfilter.md
           - anycast: basic/network/ip/anycast.md
-        - 报文生产: basic/network/frame.md
+        - 报文生成: basic/network/frame.md
         - 交换机和路由器: basic/network/switch_router.md
       - OS:
         - shell: basic/os/shell.md
@@ -236,13 +238,13 @@ nav:
         - 同步互斥: basic/os/sync.md
         - 芯片架构: basic/os/arch.md
         - gdb: basic/os/gdb.md
-        - cow: baisc/os/cow.md
+        - cow: basic/os/cow.md
       - bigData:
-        - HDFS: basic/bigData/hdfs.md
-        - mapReduce: basic/bigData/mapreduce.md
-        - yarn: basic/bigData/yarn.md
-        - hive: basic/bigData/hive.md
-        - spark: basic/bigData/spark.md
+        - HDFS: basic/bigdata/hdfs.md
+        - mapReduce: basic/bigdata/mapreduce.md
+        - yarn: basic/bigdata/yarn.md
+        - hive: basic/bigdata/hive.md
+        - spark: basic/bigdata/spark.md
       - ES: 
         - 使用: basic/es/useage.md
         - 基础: basic/es/es.md

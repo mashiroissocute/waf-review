@@ -1,5 +1,6 @@
 ## 执行一条Mysql期间发生了什么？
 https://xiaolincoding.com/mysql/base/how_select.html#mysql-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84
+
 client --> 连接器 --> 缓存 --> 词法分析器 --> 语法分析器 --> （生成语法树）--> 预处理器 --> 优化器 -->（执行计划）--> 执行器 --> 存储引擎
 ![alt text](image-2.png)
 

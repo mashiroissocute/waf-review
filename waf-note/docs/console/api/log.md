@@ -47,7 +47,6 @@ level ：决定什么级别的日志要写
 https://iwiki.woa.com/pages/viewpage.action?pageId=465532424
 
 - trpc yaml文件中共有四种配置项，分别是global ， server ， client ， plugins
-![enter image description here](/tencent/api/attachments/s3/url?attachmentid=4873754)
 - config结构体为：
 ``` 
 type Config struct {

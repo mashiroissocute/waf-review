@@ -1,4 +1,3 @@
-[toc]
 # Golang builtin func （内建函数）
 ### 使用要点
 - 如果 panic 和 recover 发生在同一个协程，那么 recover 是可以捕获的，如果 panic 和 recover 发生在不同的协程，那么 recover 是不可以捕获的。只要一个协程就可以，就是放在不同的函数中。
