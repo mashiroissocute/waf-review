@@ -121,7 +121,7 @@ else
 
 
 
-### 13.设置防泄露检测，防篡改是在rewrite阶段完成的
+### 13.设置防泄露检测，防泄露是在filter阶段完成的
 ```
 ngx.ctx.antileakage_set = user_policy.antileakage_set
 ```

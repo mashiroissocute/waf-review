@@ -23,11 +23,12 @@ nav:
           - IPIP-GRE: access/saas/lb/ipipgre.md
           - tvs-ko: access/saas/lb/tvs-ko.md
         - 自研上云:
-          - 从1.0到1.5的waf设计: access/saas/group/design.md
+          - 设计: access/saas/group/design.md
           - 组件改造: access/saas/group/rebuild.md
           - 迁移方案: access/saas/group/transfer.md
           - 性能和成本: access/saas/group/performance.md
           - tke: access/saas/group/tke.md
+          - WAF云原生之路: access/saas/group/waytocloudnative.md
         - 过载保护:
           - 135项目: access/saas/limit/135.md
           - 统计: access/saas/limit/count.md
@@ -86,42 +87,31 @@ nav:
           - access: access/engine/lua/access.md
           - filter: access/engine/lua/filter.md
           - log: access/engine/lua/log.md
+          - 性能优化: access/engine/lua/pprof.md
         - openresty: 
           - basic: access/engine/openresty/openresty.md
           - luajit: access/engine/openresty/luajit.md
           - api: access/engine/openresty/api.md
           - 线程模型: access/engine/openresty/thread.md
     - 防护:
+      - 概览: security/overview.md
       - HUB:
-        - 设计: hub/desgin.md
-        - TRPC: index.md
-        - FastHttp: index.md
-        - polaris: 
-          - hash路由: index.md
-          - 监控上报: index.md
-        - GC: 
-          - ballast: index.md
-        - monitor: 
-          - pprof: index.md
-        - json: security/hub/json.md
-        - ants.Pool: index.md
-        - benchmark: index.md
-        - 项目总结: hub/summary.md
+        - 需求分析/设计: security/hub/desgin.md
+        - 性能优化: security/hub/pprof.md
       - 基础安全:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
-          - 规则引擎: index.md
+          - 规则引擎: security/basic/web/rules.md
           - AI引擎: security/basic/web/ai.md
-        - 访问控制:
-          - 地域封禁: index.md
-          - 自定义规则: index.md
+          - 访问控制: security/basic/web/access_limit.md
         - cc防护:
           - 自定义CC: index.md
           - 智能紧急CC: index.md
+          - ipset-cc: access/saas/limit/ipsetcc.md
         - 网页防篡改: 
           - 设计: security/basic/antitamper/design.md
           - srcache: security/basic/antitamper/srcache.md
-        - 信息防泄漏: index.md
+        - 信息防泄漏: access/engine/lua/filter.md
         - 资源防盗链: security/basic/antilink/antilink.md
         - 验证码: security/basic/captcha/captcha.md
         - 腾讯云DDOS: secury/basic/ddos.md
@@ -130,7 +120,7 @@ nav:
           - 需求背景: bot/background.md
           - 功能细化: bot/feature.md
           - 架构设计: bot/desgin.md
-          - 体验: bot/use.md
+          - 用户体验: bot/use.md
         - 功能实现:
           - BOT特征提取: bot/botfeature.md
           - BOT执行器: bot/botexecutor.md
@@ -139,9 +129,9 @@ nav:
           - 科恩实验室: bot/keen.md
         - 技术相关: 
           - flink构建ClickHouse实时数仓: bot/tech/flink_clickhouse.md
-      - API安全:
-        - API安全: index.md
-        - API限流: index.md
+      # - API安全:
+      #   - API安全: index.md
+      #   - API限流: index.md
       - research: 
         - 基于DL的Payload检测: security/research/dl.md
         - 基于DNN的cc检测: security/research/dnn.md
