@@ -13,6 +13,7 @@ nav:
         - 服务票据: console/api/ticket.md
         - 程序可观测性: console/api/observability.md
       - trpc: 
+        - 设计: console/trpc/design.md
         - 插件设计: console/trpc/plugin.md
     - 接入:
       - 发展历程: access/access.md
@@ -105,8 +106,8 @@ nav:
           - AI引擎: security/basic/web/ai.md
           - 访问控制: security/basic/web/access_limit.md
         - cc防护:
-          - 自定义CC: index.md
-          - 智能紧急CC: index.md
+          # - 自定义CC: index.md
+          # - 智能紧急CC: index.md
           - ipset-cc: access/saas/limit/ipsetcc.md
         - 网页防篡改: 
           - 设计: security/basic/antitamper/design.md
@@ -114,7 +115,7 @@ nav:
         - 信息防泄漏: access/engine/lua/filter.md
         - 资源防盗链: security/basic/antilink/antilink.md
         - 验证码: security/basic/captcha/captcha.md
-        - 腾讯云DDOS: secury/basic/ddos.md
+        - 腾讯云DDOS: security/basic/ddos.md
       - BOT管理: 
         - 功能设计: 
           - 需求背景: bot/background.md

@@ -13,3 +13,4 @@ singleflight内部使用 waitGroup 来让同一个 key 的除了第一个请求�
 
 - singleflight第一个请求失败了，那么后续所有等待的请求都会返回同一个 error。
 实际上可以根据下游能支撑的rps定时forget一下key，让更多的请求能有机会走到后续逻辑。
+
