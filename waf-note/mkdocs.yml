@@ -99,6 +99,7 @@ nav:
       - HUB:
         - 需求分析/设计: security/hub/desgin.md
         - 性能优化: security/hub/pprof.md
+        - GC优化: security/hub/mem_pprof.md
       - 基础安全:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
@@ -154,6 +155,7 @@ nav:
       - Cache: basic/cache.md
       - golang:
         - 基本类型: basic/golang/type.md
+        - benchmark: basic/golang/benchmark.md
         - 包管理: basic/golang/package.md
         - 版本管理: basic/golang/goversion.md
         - lock: basic/golang/lock.md
@@ -221,7 +223,7 @@ nav:
           - anycast: basic/network/ip/anycast.md
         - 报文生成: basic/network/frame.md
         - 交换机和路由器: basic/network/switch_router.md
-      - OS:
+      - os:
         - shell: basic/os/shell.md
         - strace: basic/os/strace.md
         - crontab: basic/os/crontab.md
@@ -230,13 +232,16 @@ nav:
         - 芯片架构: basic/os/arch.md
         - gdb: basic/os/gdb.md
         - cow: basic/os/cow.md
+        - 存储器管理: basic/os/mem.md
+      - lib: 
+        - tcmalloc: basic/lib/tcmalloc.md 
       - bigData:
         - HDFS: basic/bigdata/hdfs.md
         - mapReduce: basic/bigdata/mapreduce.md
         - yarn: basic/bigdata/yarn.md
         - hive: basic/bigdata/hive.md
         - spark: basic/bigdata/spark.md
-      - ES: 
+      - es: 
         - 使用: basic/es/useage.md
         - 基础: basic/es/es.md
         - 索引: basic/es/index.md

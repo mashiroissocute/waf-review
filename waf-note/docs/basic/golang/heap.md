@@ -1,34 +1,30 @@
-## 为什么需要线程本地缓存？
-因为协程通过malloc去申请内存是系统调用。
-最终是通过内核线程去申请的内存。
-在多核CPU的架构下，不同核心的多个线程申请内存的情况是存在的。
-进程是资源分配的最小单位，因此内存是按照进程进行分配的。通过进程的多个线程共享一片内存。
-多个线程在竞争同个资源的时候是需要加锁防止冲突的。
-为了在内存申请的时候，`减少线程之间的竞争，分配内存时减少锁的过程`
-因此，为每个线程都构造了本地缓存`ThreadCache`。线程首先去自己的ThreadCache去申请内存，因为该内存为此线程持有，该过程不需要加锁，避免了加锁消耗的性能。
 
-## 为什么TCMalloc的本地缓存是给内核线程的，而Golang是给逻辑执行器的？
-本地缓存初始就是为内核线程设计的，防止内核线程在申请内存时需要加锁。
-而在Golang中，却给了逻辑执行器。这与Golang的调度模型GMP有关。M对应真正的内核线程，P是逻辑执行器，G是用户线程。本地缓存给了P，而非M。
-因为 `M` 可能因为执行I/O操作的系统调用被阻塞， `M` 会和当前 `P` 解绑，当前 `P` 绑定其他闲置或者新的 `M` ，之前的 `M` 结束系统调用会被放进闲置 `M` 链表。
- `M`没有使用的过程中 ，该`M`的 `mcache` 就得不到有效的使用，反而 `P` 是一直处于使用过程，所以 `mcache` 绑定到 `P` 上更合适。
+Go内存管理源自TCMalloc，但它比TCMalloc还多了2件东西：[逃逸分析](./stack.md#_13)和[垃圾回收](./gc.md)。
 
-## 内存分配的发展历程
-### malloc
-https://blog.csdn.net/flynetcn/article/details/127518847
-### tcmalloc
-https://wallenwang.com/2018/11/tcmalloc/#ftoc-heading-1
-http://tigerb.cn/2021/01/31/go-base/tcmalloc/
-### golang
-#### 一维线性内存
-![alt text](image-9.png)
-#### 二维链式内存
-![alt text](image-10.png)
-将一片内存按照page数量不同，分为多个span。
-将pages相同的span链起来。变成二维的内存模型。
+[TCMalloc](../lib/tcmalloc.md) 一文中通过对比了malloc和tcmalloc，解释了tcmalloc的优势。
 
-每个pages大小为8K。那么Goang会以8K为最小内存来申请内存吗？
+本文将更加细致的介绍go内存管理，同时也是对tcmalloc细节的补充。
+
+参考 : https://segmentfault.com/a/1190000020338427#item-4
+
+
+## 二维链式内存
+
+### SPAN
+golang内存管理是以span为单位的。
+span由n个pages组成，每个pages大小是操作系统内存页的整数倍。
+与TCMalloc中的Page相同，x64下1个Page的大小是8KB。
+
+golang中存在67个大小不同的span。最小1个Page到最大10个Page。
+
+### Object
+一个span最小为8K。那么Goang会以8K为最小内存来申请内存吗？
 当然不会，这样会导致大量的内存浪费。所以golang内存管理将span进一步划分为object。
+
+每个span管理object的方式是 free list：
+![alt text](image-22.png)
+
+### span class
 划分的策略如下：
 ``` 
 // class  bytes/obj  bytes/span  objects  tail waste  max waste  min align
@@ -100,32 +96,63 @@ http://tigerb.cn/2021/01/31/go-base/tcmalloc/
 //    66      28672       57344        2           0      4.91%       4096
 //    67      32768       32768        1           0     12.50%       8192
 ```
-按照obj的大小不同，分成了67个sizeclass。最小的span是1page（8192 bytes），最大的span是10page（81920 bytes）。
-### SpanClass
-实际上Go内存管理单元 `mspan` 被分为了两类：
-- 第一类：需要垃圾回收扫描的 `mspan` ，简称 `scan` 
-- 第二类：不需要垃圾回收扫描的 `mspan` ，简称 `noscan` 
-所以说**并不是所有的Go内存管理单元 `mspan` 会被垃圾回收扫描**。为了区别这两类 `mspan` ，Go语言把类型标识和上面 `sizeclass` 的值一起放在了同一个字段里。这个字段叫做SpanClass。
-
-具体如下：
--  `sizeclass` 值左移一位： `sizeclass << 1` 
--  `sizeclass` 值最后一位存类型
-	- 最后一位为1：则是不需要垃圾回收扫描的 `mspan` 
-	- 最后一位为0：则是需要垃圾回收扫描的 `mspan`
-
-这里我们以 `spanclass` 的10进制值为7的 `mspan` 为例：
-
-![alt text](image-11.png)
-
-### 内存分配
-![alt text](image-12.png)
-mheap 管理的对象为arena，每个arena为64MB。每个arena会被按照page大小进行分割。
-mcentral按照object的大小组织在一起。
-mcache初始化的时候会有完整的1-67个spanclass。
-当mcache对应的object使用完的时候，从对应级别的mcentral取。
-mcentral对应的object使用完的时候，从mheap中对应的spanlist上去，并划分object。
-mheap中则是包含了多个arena。
+按照obj的大小不同，分成了67个sizeclass。
 
 
-http://tigerb.cn/2022/04/23/go-base/memory-mspan/
-https://draveness.me/golang/docs/part3-runtime/ch07-memory/golang-memory-allocator/#%E7%BA%BF%E7%A8%8B%E7%BC%93%E5%AD%98
+### span list
+> 每个size class会分成两个spanlist。2个span class的span大小相同，只是功能不同，1个用来存放包含指针的对象，一个用来存放不包含指针的对象，不包含指针对象的Span就无需GC扫描了。
+
+例如： 申请的obj内存大小为24kb,对应size class 3，它的对象大小范围是16-32Byte，24Byte刚好在此区间，所以此对象的size class为3。 这个object将从第7（2 * 3 + 1）个spanlist上去分配内存。
+
+![alt text](image-23.png)
+
+
+
+## 内存分配
+
+### 小对象内存分配
+
+![alt text](image-24.png)
+
+#### mcache
+每个Golang的P初始化时，同时会初始化mcache，初始化会构造完整的1-67个spanclass，即133个spanlist。
+
+每当需要内存分配时，按照spanclass从mcache中申请内存。
+当对应的spanlist分配完毕之后，需要向mcentral申请span，挂到spanlist上。
+
+#### mcentral
+mcentral也有133个spanlist。
+每个spanclass包含连个spanlist
+
+- nonempty：这个链表里的span，所有span都至少有1个空闲的对象空间。这些span是mcache释放span时加入到该链表的。
+- empty：这个链表里的span，所有的span都不确定里面是否有空闲的对象空间。当一个span交给mcache的时候，就会加入到empty链表。
+
+mcache向mcentral要span时，mcentral会先从nonempty搜索满足条件的span，如果每找到再从emtpy搜索满足条件的span，然后把找到的span交给mcache。
+
+#### mheap
+mheap里保存了2棵二叉排序树，按span的page数量进行排序：
+
+- free：free中保存的span是空闲并且非垃圾回收的span。
+- scav：scav中保存的是空闲并且已经垃圾回收的span。
+
+如果是垃圾回收导致的span释放，span会被加入到scav，否则加入到free，比如刚从OS申请的的内存也组成的Span。
+
+
+mcentral向mcache提供span时，如果emtpy里也没有符合条件的span，mcentral会向mheap申请span。
+
+mcentral需要向mheap提供需要的内存页数和span class级别，然后它优先从free中搜索可用的span，如果没有找到，会从scav中搜索可用的span，如果还没有找到，它会向OS申请内存，把申请的内存页保存到span，然后把span插入到free树 。
+
+再重新搜索2棵树，必然能找到span。如果找到的span比需求的span大，则把span进行分割成2个span，其中1个刚好是需求大小，把剩下的span再加入到free中去，然后设置需求span的基本信息，然后交给mcentral。
+
+
+### 大对象内存分配
+大对象分配，大对象（一般大于 32KB）的分配不经过 mcache，而是直接从堆上分配。这是因为大对象的分配和回收比小对象更少，直接在堆上操作可以减少碎片和管理的复杂性。
+
+
+## TCmalloc和golang内存分配的区别：
+
+### 1.TCMalloc的本地缓存是给内核线程的，而Golang是给逻辑执行器P的
+本地缓存初始就是为内核线程设计的，防止内核线程在申请内存时需要加锁。
+而在Golang中，却给了逻辑执行器。这与Golang的调度模型GMP有关。M对应真正的内核线程，P是逻辑执行器，G是用户线程。本地缓存给了P，而非M。
+因为 `M` 可能因为执行I/O操作的系统调用被阻塞， `M` 会和当前 `P` 解绑，当前 `P` 绑定其他闲置或者新的 `M` ，之前的 `M` 结束系统调用会被放进闲置 `M` 链表。
+ `M`没有使用的过程中 ，该`M`的 `mcache` 就得不到有效的使用，反而 `P` 是一直处于使用过程，所以 `mcache` 绑定到 `P` 上更合适。

@@ -168,8 +168,10 @@ message QueryBypassRsp{
 
 ### json优化
 探索了一下json解析方式：
+
 - encoding/json
 - fastjson
 - 自己的写的json序列化 (基于确定的数据结构来进行优化)
 - snoicjson
+
 最终snoicjson表现最好，采用该json解析库。
