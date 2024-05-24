@@ -98,8 +98,11 @@ nav:
       - 概览: security/overview.md
       - HUB:
         - 需求分析/设计: security/hub/desgin.md
-        - 性能优化: security/hub/pprof.md
-        - GC优化: security/hub/mem_pprof.md
+        - 性能优化: 
+          - 优化概览: security/hub/pprof.md
+          - GC/内存优化: security/hub/mem_pprof.md
+          - 执行速度优化: security/hub/speed_pprof.md
+          - I/O优化: security/hub/io_pprof.md
       - 基础安全:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
@@ -150,6 +153,7 @@ nav:
       - clickhouse: 
         - 基础: basic/clickhouse/clickhouse.md
     - 基础:
+      - wrk: basic/test/wrk.md
       - 正则表达式: basic/regex/regex.md
       - PB: basic/pb.md
       - Cache: basic/cache.md
@@ -179,6 +183,7 @@ nav:
         - log: basic/golang/log.md
         - 信号量: basic/golang/semaphore.md
         - 证书: basic/golang/cert.md
+        - pprof: basic/golang/pprof.md
         - 源码:
           - m0/g0: basic/golang/sourcecode/m0_g0.md
           - 创建maing: basic/golang/sourcecode/maing.md

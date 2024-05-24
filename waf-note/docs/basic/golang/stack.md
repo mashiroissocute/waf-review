@@ -104,11 +104,58 @@ Go 语言的编译器使用逃逸分析决定哪些变量应该在栈上分配�
 
 常见的Go 语言的逃逸分析的情况如下：
 
-- 1.指针逃逸
-- 2.interface逃逸
+- 1.指针逃逸: 函数返回指针
+- 2.interface逃逸: 参数使用interface
 - 3.大变量逃逸
 - 4.闭包
-- 5.指针引用（如果一个变量被取地址，那么它就有可能被分配到堆上。当然，还是要对该变量做逃逸分析，如果函数return之后，变量不再被引用，则将其分配到栈上。否在在堆上）因此，`我们知道传递指针可以减少底层值的拷贝，可以提高效率，但是如果拷贝的数据量小，由于指针传递会产生逃逸，可能会使用堆，也可能会增加GC的负担，所以传递指针不一定是高效的。`
+
+
+
+案例补充:
+
+- 在调用方函数内部创建的对象通过参数（指针或非指针）的形式传递给被调用方时，该变量都会使用`栈`内存。（通过指针传递参数，可以避免参数拷贝）
+- 在被调用函数内部创建的对象通过指针形式返回给调用方时，该变量会使用`堆`内存。（如果调用者访问该地址，栈空间已经被回收，将存在野指针的问题）
+- 在被调用函数内部创建的对象通过非指针形式返回给调用方时，该变量会使用`栈`内存。（但是存在对象在栈帧间复制的过程.当前栈帧中为返回值分配空间，并在函数执行完毕后将返回值复制到调用者的栈帧）
+
+例如: 
+
+```golang
+package main
+
+type MyStruct struct {
+	Value int
+}
+
+func createMyStructNoPointer() MyStruct {
+	obj2 := MyStruct{Value: 0}
+	return obj2
+}
+
+func createMyStructPointer() *MyStruct {
+	obj1 := MyStruct{Value: 0}
+	return &obj1
+}
+
+func modifyMyStruct(obj *MyStruct) {
+	obj.Value = 0
+}
+
+func main() {
+	obj := MyStruct{Value: 42}
+	modifyMyStruct(&obj)
+	_ = obj.Value
+
+	obj1 := createMyStructPointer()
+	_ = obj1.Value
+
+	obj2 := createMyStructNoPointer()
+	_ = obj2.Value
+}
+
+go build -gcflags '-m' main.go
+```
+逃逸分析发现只有obj1逃逸到了堆上
+moved to heap: obj1
 
 
 https://driverzhang.github.io/post/golang%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90/
