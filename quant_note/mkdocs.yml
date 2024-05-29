@@ -10,6 +10,7 @@ nav:
         - freqtrade使用: freqtrade使用方法.md
       - 知识:
         - 交易类型: spot-margin-future-option.md
+        - 带单交易策略: knowleage/copy_trading.md
       - 策略:
         - 趋势策略:
           - 现货金三角: 现货金三角.md
