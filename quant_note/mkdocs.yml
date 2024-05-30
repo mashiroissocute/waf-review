@@ -4,18 +4,26 @@ repo_url: https://github.com/freqtrade/freqtrade
 edit_uri: edit/develop/docs/
 use_directory_urls: True
 nav:
+    - 期权:
+      - 波动率策略: 
+        - 跨式组合: volatility/straddle.md
     - 量化:
       - freqtrade:
-        - freqtrade安装: freqtrade安装指南.md
-        - freqtrade使用: freqtrade使用方法.md
+        - freqtrade安装: freqtrade/freqtrade安装指南.md
+        - freqtrade使用: freqtrade/freqtrade使用方法.md
+        - freqtrade注意事项: freqtrade/freqtrade实盘注意事项.md
+        - freqtrade知识点: freqtrade/freqtrade_point.md
       - 知识:
         - 交易类型: spot-margin-future-option.md
         - 带单交易策略: knowleage/copy_trading.md
       - 策略:
+        - 开发流程: strategy/策略开发流程.md
         - 趋势策略:
           - 现货金三角: 现货金三角.md
           - 期货金三角: 期货金三角.md
           - 在趋势系统中如何应对震荡: 在趋势系统中如何应对震荡.md
+        - 反转策略:
+          - 突破回踩 : strategy/reverse-1.md
     - freqtrade:
       - Home: index.md
       - Quickstart with Docker: docker_quickstart.md
