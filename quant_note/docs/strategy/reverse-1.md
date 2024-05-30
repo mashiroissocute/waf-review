@@ -33,7 +33,8 @@ class FutureDMIPRICEStrategy(IStrategy):
         "0": 0.1
     }
     
-    stoploss =  -0.1
+    # custom stoploss must less than stoploss
+    stoploss =  -0.2 
     
     # trailing_stop = False
     # trailing_stop_positive = 0.2

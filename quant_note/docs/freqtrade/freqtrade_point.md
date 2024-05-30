@@ -16,7 +16,12 @@ adjust_trade_position进调整一个trade的仓位，并不像eps那样开启多
 
 ## custom_stoploss
 
-在dca订单中，stoploss不会跟着dca订单走，需要使用custom_stoploss去调整dca订单后的stoploss
+在dca订单中，stoploss不会跟着dca订单走，需要使用custom_stoploss去调整dca订单后的stoploss.
+
+
+注意custom_stoploss只能相较于stoploss向上移动，否则无效。
+
+并且custom_stoploss和tailing stop loss不能一起使用。
 
 ```python
 use_custom_stoploss = True
