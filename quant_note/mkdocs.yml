@@ -24,6 +24,7 @@ nav:
           - 在趋势系统中如何应对震荡: 在趋势系统中如何应对震荡.md
         - 反转策略:
           - 突破回踩 : strategy/reverse-1.md
+          - 突破回踩,ATR动态止盈止损: strategy/reverse-2.md
     - freqtrade:
       - Home: index.md
       - Quickstart with Docker: docker_quickstart.md
