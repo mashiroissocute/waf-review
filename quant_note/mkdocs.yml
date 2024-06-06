@@ -25,6 +25,7 @@ nav:
         - 反转策略:
           - 突破回踩 : strategy/reverse-1.md
           - 突破回踩,ATR动态止盈止损: strategy/reverse-2.md
+          - 突破回踩均线DCA: strategy/reverse-3.md
       - 量化投资_策略与技术:
         - 介绍: quantbook/quantinvestment_strategy_tech/intro.md
         - 选股: quantbook/quantinvestment_strategy_tech/choose.md

@@ -103,6 +103,14 @@ nav:
           - GC/内存优化: security/hub/mem_pprof.md
           - 执行速度优化: security/hub/speed_pprof.md
           - I/O优化: security/hub/io_pprof.md
+          - 内核调参: security/hub/kernel_pprof.md
+        - polaris服务治理:
+          - polaris简介: security/hub/service/polaris.md
+          # - 服务注册与发现: security/hub/service/registry.md
+          - 服务调用: security/hub/service/call.md
+          - 服务监控: security/hub/service/monitor.md
+        - 服务部署:
+          - 服务部署: security/hub/service/deploy.md
       - 基础安全:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
