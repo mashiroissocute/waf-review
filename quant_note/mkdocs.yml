@@ -7,6 +7,10 @@ nav:
     - 期权:
       - 波动率策略: 
         - 跨式组合: volatility/straddle.md
+    - 带单项目:
+      - 自己带单 : copytrading/copytrading.md
+      - 带单点评平台: copytrading/copytrading_review_platform.md
+      - 带单员分析短视频: copytrading/copytrading_analyse.md
     - 量化:
       - freqtrade:
         - freqtrade安装: freqtrade/freqtrade安装指南.md
