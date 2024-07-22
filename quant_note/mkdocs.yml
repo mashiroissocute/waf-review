@@ -33,6 +33,10 @@ nav:
       - 量化投资_策略与技术:
         - 介绍: quantbook/quantinvestment_strategy_tech/intro.md
         - 选股: quantbook/quantinvestment_strategy_tech/choose.md
+      - 交易工具: 
+        - 网格马丁混合策略: trading_tools/grid_DCA.md
+        - 比例系数衰减网格策略: trading_tools/grid_ratio.md
+
     - freqtrade:
       - Home: index.md
       - Quickstart with Docker: docker_quickstart.md
