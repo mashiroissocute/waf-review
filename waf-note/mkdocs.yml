@@ -111,6 +111,8 @@ nav:
           - 服务监控: security/hub/service/monitor.md
         - 服务部署:
           - 服务部署: security/hub/service/deploy.md
+        - 案例:
+          - 小红书: security/hub/xiaohongshu.md
       - 基础安全:
         - WEB安全:
           - WEB攻击: security/basic/web/attack.md
