@@ -1,7 +1,7 @@
 site_name: WAF
 use_directory_urls: True
 nav:
-    - 概览: index.md
+    - 项目总结: index.md
     - 控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
