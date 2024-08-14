@@ -4,38 +4,51 @@ repo_url: https://github.com/freqtrade/freqtrade
 edit_uri: edit/develop/docs/
 use_directory_urls: True
 nav:
-    - 期权:
-      - 波动率策略: 
-        - 跨式组合: volatility/straddle.md
+    - 项目总结: summary.md
+    - 金融:
+      - 红利: finance/红利指数.md
+      - 期权: finance/straddle.md
+      - 债券: finance/债券.md
+      - 标的规划: finance/投资标的.md
     - 带单项目:
+      - 商业思路: copytrading/商业思路.md
       - 自己带单 : copytrading/copytrading.md
-      - 带单点评平台: copytrading/copytrading_review_platform.md
-      - 带单员分析短视频: copytrading/copytrading_analyse.md
+      - 带单点评平台: copytrading/copytradig_review_platform.md
     - 量化:
       - freqtrade:
         - freqtrade安装: freqtrade/freqtrade安装指南.md
         - freqtrade使用: freqtrade/freqtrade使用方法.md
-        - freqtrade注意事项: freqtrade/freqtrade实盘注意事项.md
         - freqtrade知识点: freqtrade/freqtrade_point.md
+        - freqtrade实盘注意事项: freqtrade/freqtrade实盘注意事项.md
+        - freqtrade回测注意事项: freqtrade/freqtrade回测注意事项.md
       - 知识:
         - 交易类型: spot-margin-future-option.md
         - 带单交易策略: knowleage/copy_trading.md
       - 策略:
         - 开发流程: strategy/策略开发流程.md
         - 趋势策略:
-          - 现货金三角: 现货金三角.md
-          - 期货金三角: 期货金三角.md
-          - 在趋势系统中如何应对震荡: 在趋势系统中如何应对震荡.md
+          - 现货金三角: strategy/现货金三角.md
+          - 期货金三角: strategy/期货金三角.md
+          - 在趋势系统中如何应对震荡: strategy/在趋势系统中如何应对震荡.md
         - 反转策略:
-          - 突破回踩 : strategy/reverse-1.md
+          - 突破回踩: strategy/reverse-1.md
           - 突破回踩,ATR动态止盈止损: strategy/reverse-2.md
           - 突破回踩均线DCA: strategy/reverse-3.md
+        - 粘合发散:
+          - 均线粘合发散: strategy/期货均线粘合发散.md
+        - 因子:
+          - 微盘因子: strategy/小微盘选币因子.md
       - 量化投资_策略与技术:
-        - 介绍: quantbook/quantinvestment_strategy_tech/intro.md
-        - 选股: quantbook/quantinvestment_strategy_tech/choose.md
+        - 介绍: quantinvestment_strategy_tech/intro.md
+        - 选股: quantinvestment_strategy_tech/choose.md
       - 交易工具: 
         - 网格马丁混合策略: trading_tools/grid_DCA.md
         - 比例系数衰减网格策略: trading_tools/grid_ratio.md
+      - 贝叶斯因子挖掘和超参数调优: 
+        - 关于超参数: ml/关于超参数.md
+        - bayesian优化: ml/bayesian.md
+        - epoch: ml/epoch.md
+
 
     - freqtrade:
       - Home: index.md
