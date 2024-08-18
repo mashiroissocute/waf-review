@@ -1,8 +1,11 @@
-site_name: WAF
+site_name: LUCASLI
 use_directory_urls: True
 nav:
-    - 项目总结: index.md
-    - 控制面:
+    - Hi: index.md
+    - 中文简历: lucasssli.html
+    - EnglishCV: lucasssli-en.html
+    - Lucas项目总结: prjectintro.md
+    - WAF控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
         - log: console/api/log.md
@@ -15,7 +18,7 @@ nav:
       - trpc: 
         - 设计: console/trpc/design.md
         - 插件设计: console/trpc/plugin.md
-    - 接入:
+    - WAF接入:
       - 发展历程: access/access.md
       - SAAS-WAF:
         - DNS: access/saas/dns.md
@@ -94,7 +97,7 @@ nav:
           - luajit: access/engine/openresty/luajit.md
           - api: access/engine/openresty/api.md
           - 线程模型: access/engine/openresty/thread.md
-    - 防护:
+    - WAF防护:
       - 概览: security/overview.md
       - HUB:
         - 需求分析/设计: security/hub/desgin.md
@@ -151,7 +154,7 @@ nav:
         - 基于DL的Payload检测: security/research/dl.md
         - 基于DNN的cc检测: security/research/dnn.md
         - 基于GD的SVM模型推导: security/research/svm.md
-    - 日志:
+    - WAF日志:
       - lua上传日志: logs/lua.md
       - kafka: 
         - producer: logs/kafka/producer.md
@@ -162,9 +165,12 @@ nav:
         - 索引: basic/es/index.md
       - clickhouse: 
         - 基础: basic/clickhouse/clickhouse.md
-    - 基础:
-      - wrk: basic/test/wrk.md
+    - WAF问题排查:
+      - cpu100问题: problem/cpu100.md
+      - coredump问题: problem/coredump.md
+    - 基础知识积累:
       - 正则表达式: basic/regex/regex.md
+      - wrk: basic/test/wrk.md
       - PB: basic/pb.md
       - Cache: basic/cache.md
       - golang:
@@ -262,14 +268,107 @@ nav:
         - 索引: basic/es/index.md
       - clickhouse: 
         - 基础: basic/clickhouse/clickhouse.md
-    - 问题排查:
-      - cpu100问题: problem/cpu100.md
-      - coredump问题: problem/coredump.md
-
+    - QuantDev:
+      - 项目总结: quant/summary.md
+      - 金融:
+        - 红利: quant/finance/红利指数.md
+        - 期权: quant/finance/straddle.md
+        - 债券: quant/finance/债券.md
+        - 标的规划: quant/finance/投资标的.md
+      - 带单项目:
+        - 商业思路: quant/copytrading/商业思路.md
+        - 自己带单 : quant/copytrading/copytrading.md
+        - 带单点评平台: quant/copytrading/copytradig_review_platform.md
+      - 量化:
+        - freqtrade:
+          - freqtrade安装: quant/freqtrade/freqtrade安装指南.md
+          - freqtrade使用: quant/freqtrade/freqtrade使用方法.md
+          - freqtrade知识点: quant/freqtrade/freqtrade_point.md
+          - freqtrade实盘注意事项: quant/freqtrade/freqtrade实盘注意事项.md
+          - freqtrade回测注意事项: quant/freqtrade/freqtrade回测注意事项.md
+        - 知识:
+          - 交易类型: quant/spot-margin-future-option.md
+          - 带单交易策略: quant/knowleage/copy_trading.md
+        - 策略:
+          - 开发流程: quant/strategy/策略开发流程.md
+          - 趋势策略:
+            - 现货金三角: quant/strategy/现货金三角.md
+            - 期货金三角: quant/strategy/期货金三角.md
+            - 在趋势系统中如何应对震荡: quant/strategy/在趋势系统中如何应对震荡.md
+          - 反转策略:
+            - 突破回踩: quant/strategy/reverse-1.md
+            - 突破回踩,ATR动态止盈止损: quant/strategy/reverse-2.md
+            - 突破回踩均线DCA: quant/strategy/reverse-3.md
+          - 粘合发散:
+            - 均线粘合发散: quant/strategy/期货均线粘合发散.md
+          - 因子:
+            - 微盘因子: quant/strategy/小微盘选币因子.md
+        - 量化投资_策略与技术:
+          - 介绍: quant/quantinvestment_strategy_tech/intro.md
+          - 选股: quant/quantinvestment_strategy_tech/choose.md
+        - 交易工具: 
+          - 网格马丁混合策略: quant/trading_tools/grid_DCA.md
+          - 比例系数衰减网格策略: quant/trading_tools/grid_ratio.md
+        - 贝叶斯因子挖掘和超参数调优: 
+          - 关于超参数: quant/ml/关于超参数.md
+          - bayesian优化: quant/ml/bayesian.md
+          - epoch: quant/ml/epoch.md
+        - adptive-ai-modle:
+          - intro: quant/ai/intro.md
+      - freqtrade:
+        - Home: quant/index.md
+        - Quickstart with Docker: quant/docker_quickstart.md
+        - Installation:
+            - Linux/MacOS/Raspberry: quant/installation.md
+            - Windows: quant/windows_installation.md
+        - Freqtrade Basics: quant/bot-basics.md
+        - Configuration: quant/configuration.md
+        - Strategy Customization: quant/strategy-customization.md
+        - Strategy Callbacks: quant/strategy-callbacks.md
+        - Stoploss: quant/stoploss.md
+        - Plugins: quant/plugins.md
+        - Start the bot: quant/bot-usage.md
+        - Control the bot:
+            - Telegram: quant/telegram-usage.md
+            - REST API & FreqUI: quant/rest-api.md
+            - Web Hook: quant/webhook-config.md
+        - Data Downloading: quant/data-download.md
+        - Backtesting: quant/backtesting.md
+        - Lookahead analysis: quant/lookahead-analysis.md
+        - Hyperopt: quant/hyperopt.md
+        - FreqAI:
+            - Introduction: quant/freqai.md
+            - Configuration: quant/freqai-configuration.md
+            - Parameter table: quant/freqai-parameter-table.md
+            - Feature engineering: quant/freqai-feature-engineering.md
+            - Running FreqAI: quant/freqai-running.md
+            - Reinforcement Learning: quant/freqai-reinforcement-learning.md
+            - Developer guide: quant/freqai-developers.md
+        - Short / Leverage: quant/leverage.md
+        - Utility Sub-commands: quant/utils.md
+        - Plotting: quant/plotting.md
+        - Exchange-specific Notes: quant/exchanges.md
+        - Data Analysis:
+            - Jupyter Notebooks: quant/data-analysis.md
+            - Strategy analysis: quant/strategy_analysis_example.md
+            - Backtest analysis: quant/advanced-backtesting.md
+        - Advanced Topics:
+            - Advanced Post-installation Tasks: quant/advanced-setup.md
+            - Trade Object: quant/trade-object.md
+            - Advanced Strategy: quant/strategy-advanced.md
+            - Advanced Hyperopt: quant/advanced-hyperopt.md
+            - Producer/Consumer mode: quant/producer-consumer.md
+            - Edge Positioning: quant/edge.md
+        - FAQ: quant/faq.md
+        - SQL Cheat-sheet: quant/sql_cheatsheet.md
+        - Strategy migration: quant/strategy_migration.md
+        - Updating Freqtrade: quant/updating.md
+        - Deprecated Features: quant/deprecated.md
+        - Contributors Guide: quant/developer.md
 theme:
   name: material
-  logo: "images/logo.png"
-  favicon: "images/logo.png"
+  # logo: "images/logo.png"
+  # favicon: "images/logo.png"
   custom_dir: "docs/overrides"
   features:
     - content.code.annotate

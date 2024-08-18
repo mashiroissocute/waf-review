@@ -48,6 +48,8 @@ nav:
         - 关于超参数: ml/关于超参数.md
         - bayesian优化: ml/bayesian.md
         - epoch: ml/epoch.md
+      - adptive-ai-modle:
+        - intro: ai/intro.md
 
 
     - freqtrade:
