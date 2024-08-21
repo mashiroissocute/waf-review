@@ -173,6 +173,10 @@ nav:
       - wrk: basic/test/wrk.md
       - PB: basic/pb.md
       - Cache: basic/cache.md
+      - python:
+        - jupyter: basic/python/jupyter.md
+        - python核心与技术: basic/python/basic.md
+        - interview-1: basic/python/interview-1.md
       - golang:
         - 基本类型: basic/golang/type.md
         - benchmark: basic/golang/benchmark.md
