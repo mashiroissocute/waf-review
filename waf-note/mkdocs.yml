@@ -235,6 +235,7 @@ nav:
         - 容器技术: basic/docker/tech.md
       - git: basic/git/useage.md
       - network:
+        - allpoint: basic/networl/allpoint.md
         - 应用层协议:
           - HTTP: basic/network/http/http.md
           - TLS: basic/network/http/tls.md
@@ -249,15 +250,19 @@ nav:
         - 报文生成: basic/network/frame.md
         - 交换机和路由器: basic/network/switch_router.md
       - os:
+        - allpoint: basic/os/allpoint.md
+        - 并发模型: basic/os/concurrency.md
+        - 同步互斥: basic/os/sync.md
+        - 存储器管理: basic/os/mem.md
+        - 中断: basic/os/break.md
+        - IO: basic/os/io.md
+        - Socket: basic/network/tcp/socket.md
         - shell: basic/os/shell.md
         - strace: basic/os/strace.md
         - crontab: basic/os/crontab.md
-        - 并发模型: basic/os/concurrency.md
-        - 同步互斥: basic/os/sync.md
         - 芯片架构: basic/os/arch.md
         - gdb: basic/os/gdb.md
         - cow: basic/os/cow.md
-        - 存储器管理: basic/os/mem.md
       - lib: 
         - tcmalloc: basic/lib/tcmalloc.md 
       - bigData:
@@ -275,6 +280,7 @@ nav:
     - QuantDev:
       - 项目总结: quant/summary.md
       - 金融:
+        - 指标: quant/finance/indcator.md
         - 红利: quant/finance/红利指数.md
         - 期权: quant/finance/straddle.md
         - 债券: quant/finance/债券.md
