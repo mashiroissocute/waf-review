@@ -211,11 +211,13 @@ nav:
           - 运行normalg: basic/golang/sourcecode/runnormalg.md
           - runtime通用函数: bacic/golang/sourcecode/runtime.md
       - redis:
+        - point: basic/redis/point.md
         - pipeline: basic/redis/pipeline.md
         - 使用场景: basic/redis/useage.md
         - 深入: basic/redis/deep.md
         - 分布式锁: basic/redis/lock.md
       - mysql: 
+        - 主从: basic/mysql/masterslave.md
         - 分页算法: basic/mysql/page.md
         - metadatalock: basic/mysql/metadatalock.md
         - 触发器: basic/mysql/trigger.md
@@ -239,9 +241,11 @@ nav:
         - 应用层协议:
           - HTTP: basic/network/http/http.md
           - TLS: basic/network/http/tls.md
-          - 回话保持/身份认证: basic/network/http/cookie_token.md
           - 基于HTTP的追加协议: basic/network/http/http_append.md
+          - DNS: access/saas/dns.md
+          - 回话保持/身份认证: basic/network/http/cookie_token.md
         - 连接层协议:
+          - tcp: basic/network/tcp/tcp.md
           - 长链接: basic/network/tcp/keepalive.md
           - socket: basic/network/tcp/socket.md
         - 网络层协议:

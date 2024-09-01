@@ -1,6 +1,19 @@
 ## 响应码
 
-### **302 Moved Temporarily **
+
+### 301 Moved permanent
+nginx作为代理服务器，请求的host匹配到的server中包含永久重定向命令。
+
+出现场景1:
+``` 
+server {
+    listen       80;
+    server_name  xxx.com;
+    rewrite ^/(.*) https://$host/$1 permanent;
+}
+```
+
+### 302 Moved Temporarily 
 nginx作为代理服务器，请求的host匹配到的server中包含临时重定向命令。
 
 出现场景1:https强制跳转
@@ -15,20 +28,9 @@ Waf返回：302 Moved Temporarily
 请求重定向：curl + -L / 浏览器自动支持
 
 
-### **301 Moved permanent**
-nginx作为代理服务器，请求的host匹配到的server中包含永久重定向命令。
+### 400 Bad Request 
+客户端错误
 
-出现场景1:
-``` 
-server {
-    listen       80;
-    server_name  xxx.com;
-    rewrite ^/(.*) https://$host/$1 permanent;
-}
-```
-
-
-### **400 Bad Request **
 nginx作为代理服务器，无法理解当前请求，或者认为请求的参数有误。
 
 出现场景1：没有与sever请求的host匹配，走默认localhost.conf。设置状态码为400。 
@@ -38,25 +40,26 @@ Waf返回：TencetWafEngine中，在rewrite阶段发现返回状态码为400时�
 出现场景2: request header过大（cookie）超出nginx读取header的缓冲区。
 
 
-### **502 Bad GateWay**
-nginx作为网关或者代理工作的服务器，尝试向上游服务器发起请求时，**收到了无效的响应**（收到响应，但无效）。
+### 502 Bad GateWay
 
-**出现场景**：关闭nginx代理的上游服务器，关闭上游服务防火墙。（建立连接，但是收到无效响应）
+nginx作为网关或者代理工作的服务器，尝试向上游服务器发起请求时，收到了无效的响应（收到响应，但无效）。
+
+出现场景：关闭nginx代理的上游服务器，关闭上游服务防火墙。（建立连接，但是收到无效响应）
 
 nginx error log ：connect() failed (111: Connection refused) while connecting to upstream。
 
 Waf返回：“很抱歉，你提交的请求无法正常响应，请联系网站管理员处理”
 
-### **504 GateWay Time-Out** 
-nginx作为网关或者代理工作的服务器向上游服务器发起请求时，未能在一定的时间内从上游服务器收到响应（**超时，没有收到响应**），与proxy_read_time/proxy_connect_timeout有联系。
+### 504 GateWay Time-Out 
+nginx作为网关或者代理工作的服务器向上游服务器发起请求时，未能在一定的时间内从上游服务器收到响应（超时，没有收到响应），与proxy_read_time/proxy_connect_timeout有联系。
 
-**出现场景1**：开启nginx代理的上游服务，但是开启上游服务防火墙，阻止端口。 （无法建立连接，将在proxy_connect_timeout时间后超时返回504）
+出现场景1：开启nginx代理的上游服务，但是开启上游服务防火墙，阻止端口。 （无法建立连接，将在proxy_connect_timeout时间后超时返回504）
 
 nginx error log : upstream timed out (110: Connection timed out) while connecting to upstream。
 
 Waf返回：“很抱歉，你提交的请求无法正常响应，请联系网站管理员处理”
 
-**出现场景2**: 开启nginx代理的上游服务，关闭上游服务器防火墙，但是上游服务处理时间超过proxy_read_timeout。（成功建立连接，但是nginx在proxy_read_timeout时间内没有收到上游服务器的响应，超时返回）
+出现场景2: 开启nginx代理的上游服务，关闭上游服务器防火墙，但是上游服务处理时间超过proxy_read_timeout。（成功建立连接，但是nginx在proxy_read_timeout时间内没有收到上游服务器的响应，超时返回）
 
 nginx error log : upstream timed out (110: Connection timed out) while reading response header from upstream。
 
@@ -128,6 +131,31 @@ Waf返回：“很抱歉，你提交的请求无法正常响应，请联系网�
 |Expires |实体主体过期的日期时间 |
 |Last-Modified |资源的最后修改日期时间 |
 
+
+## 什么时候http连接断开
+
+- 长时间未通信，断开
+- 重试超过次数，断开
+- close，主动断开
+
+## 长连接
+
+HTTP长连接依赖TCP连接不关闭。
+所以不要调用close，并且定期发送心跳，保持tcp连接不断开。
+
+
+
+## HTTP报文解析
+解析请求行：
+当读取到足够的数据后，Nginx会尝试解析HTTP请求的请求行。请求行包含请求方法、请求URI和HTTP版本信息。Nginx会根据这些信息判断请求的类型，并进行相应的处理。
+
+解析请求头：
+解析完请求行后，Nginx会继续解析请求头。请求头包含多个键值对，描述请求的元数据。Nginx会将解析到的请求头存储在一个内部表示的结构体中，以便后续处理。
+
+解析请求体：
+如果请求方法需要请求体（如POST、PUT等），Nginx会在解析完请求头后继续读取并解析请求体。请求体的大小可以通过请求头中的Content-Length字段或Transfer-Encoding字段来确定。
+
+
 ## HTTPS
 
 ### http的安全性问题
@@ -135,11 +163,9 @@ Waf返回：“很抱歉，你提交的请求无法正常响应，请联系网�
 - 报文完整性没有验证，内容可能被篡改
 - 通信方身份没有验证，身份可能遭遇伪装
 ### TLS
-- 加密：[非对称加密](https://www.cyc2018.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/HTTP/HTTP.html#%E5%8A%A0%E5%AF%86) 
-- 完整性保护：摘要处理，使用约定的哈希算法把数据进行哈希
+TLS四次握手
 
-### Https通信过程
-https://cloud.tencent.com/document/product/214/54254
+[tls](./tls.md)
 
 ## CURL
 

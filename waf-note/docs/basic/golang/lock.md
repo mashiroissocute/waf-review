@@ -43,7 +43,7 @@ sema时runtime的信号量：https://iwiki.woa.com/pages/viewpage.action?pageId=
 
 当一个goroutine在lock自旋的过程中，成功获取了锁，会将state的woken设置为1。
 
-当一个goroutine在unlock时，发现state的woken是1，知道已经有一个goroutine通过自旋获取到了锁，就不在通过runtime_Semrelease去释放一个信号量，并唤醒信号量上阻塞的goroutine。
+当一 有一个goroutine通过自旋获取到了锁，就不在通过runtime_Semrelease去释放一个信号量，并唤醒信号量上阻塞的goroutine。
 
 这个逻辑，仅当mutex正常模式才执行。 当mutex处于饥饿模式，会直接调用runtime_Semrelease，并唤醒阻塞在信号量上的goroutine。
 

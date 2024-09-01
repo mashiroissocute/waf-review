@@ -39,18 +39,86 @@ SPDY位于SSL和HTTP之间。HTTP应用层，SPDY会话层，SSL表示层。
 使用WebSocket时，需要先建立HTTP连接。
 握手 ： 客户端，使用Upgrade：websocket首部。服务端响应101 Switching Protocols。
 握手后，不在使用HTTP数据帧而使用websocket数据帧。
+#### 示例
+WebSocket服务示例：
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/gorilla/websocket"
+)
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
+func main() {
+	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+		conn, err := upgrader.Upgrade(w, r, nil) //定义了一个`upgrader`变量，用于将HTTP连接升级为WebSocket连接。
+		if err != nil {
+			fmt.Println("Upgrade error:", err)
+			return
+		}
+		defer conn.Close()
+
+		for {
+        err = conn.WriteMessage(messageType, message) //推送消息
+        if err != nil {
+            fmt.Println("Write error:", err)
+            break
+        }
+	})
+
+	http.ListenAndServe(":8080", nil)
+}
+```
+WebSocket客户端示例：
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/gorilla/websocket"
+	"time"
+)
+
+func main() {
+	dialer := websocket.Dialer{
+		Proxy:            nil,
+		HandshakeTimeout: 45 * time.Second,
+	}
+
+	conn, _, err := dialer.Dial("ws://localhost:8080/ws", nil)
+	if err != nil {
+		fmt.Println("Dial error:", err)
+		return
+	}
+	defer conn.Close()
+
+	for i := 0; i < 5; i++ {
+
+		messageType, message, err := conn.ReadMessage() // 读取
+		if err != nil {
+			fmt.Println("Read error:", err)
+			break
+		}
+
+		fmt.Println("Received message:", string(message))
+		time.Sleep(1 * time.Second)
+	}
+}
+```
+
 
 ### 期待已久的HTTP2.0
 HTTP2.0基于SPDY websocket等协议，在以下方面提升性能：
-
-- 多路复用，一条连接处理多个HTTP请求
-- TLS义务化
-- 压缩
-- 流量控制
-- webSocket
-
-
-
 
 ## HTTP2.0
 https://juejin.cn/post/6844903984524705800
@@ -110,3 +178,19 @@ server:                                            #服务端配置
 ## 检测HTTP2.0
 myssl
 ![alt text](image-5.png)
+
+
+
+
+## HTTP/1.0与HTTP/1.1的区别
+
+- 长连接：HTTP/1.0需要使用Connection: keep-alive参数来告知服务器端要建立一个长连接，而HTTP/1.1默认支持长连接
+- Host域：HTTP/1.0不支持虚拟主机，而HTTP/1.1引入了Host头域，支持在一台服务器上使用多个虚拟主机
+
+
+## HTTP/1.1与HTTP/2.0的区别
+
+- 多路复用：HTTP/2.0允许同时通过单一的HTTP/2连接发起多重的请求-响应消息，解决了HTTP/1.1中的队头阻塞问题。
+- 二进制分帧：HTTP/2.0使用二进制分帧层，将HTTP消息拆分为多个帧，并对每个帧进行二进制编码和解码，提高了传输效率
+- 头部压缩：HTTP/2.0使用HPACK算法对请求和响应头部进行压缩，减少了传输的数据量
+- 服务器推送：HTTP/2.0支持服务器推送，服务器可以主动将与请求相关的资源推送给客户端，减少了额外的请求延迟。
