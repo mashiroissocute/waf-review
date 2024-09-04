@@ -2,7 +2,7 @@ site_name: LUCASLI
 use_directory_urls: True
 nav:
     - Hi: index.md
-    - 中文简历: lucasssli.html
+    - 中文简历: 李仁杰_15622300793.html
     - EnglishCV: lucasssli-en.html
     - Lucas项目总结: prjectintro.md
     - WAF控制面:
@@ -267,6 +267,7 @@ nav:
         - 芯片架构: basic/os/arch.md
         - gdb: basic/os/gdb.md
         - cow: basic/os/cow.md
+        - 常见问题: basic/os/question.md
       - lib: 
         - tcmalloc: basic/lib/tcmalloc.md 
       - bigData:
@@ -283,6 +284,8 @@ nav:
         - 基础: basic/clickhouse/clickhouse.md
     - QuantDev:
       - 项目总结: quant/summary.md
+      - 框架: quant/框架.md
+      - 实盘数据: quant/livedata.md
       - 金融:
         - 指标: quant/finance/indcator.md
         - 红利: quant/finance/红利指数.md

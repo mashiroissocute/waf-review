@@ -19,11 +19,6 @@
 - telegram: t.me/lucasssli
 - github: github.com/mashiroissocute
 
-简历
-
-![alt text](lucasssli-1.jpg)
-![alt text](lucasssli-2.jpg)
-![alt text](lucasssli-3.jpg)
 
 
 
