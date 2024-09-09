@@ -2,9 +2,11 @@ site_name: LUCASLI
 use_directory_urls: True
 nav:
     - Hi: index.md
-    - 中文简历: 李仁杰_15622300793.html
-    - EnglishCV: lucasssli-en.html
-    - Lucas项目总结: prjectintro.md
+    - 简历:
+      - 量化: cv/量化开发_李仁杰_15622300793.html
+      - AI: cv/AI开发_李仁杰_15622300793.html
+      - 后台: cv/后台开发_李仁杰_15622300793.html
+    - 项目总结: prjectintro.md
     - WAF控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
