@@ -239,6 +239,7 @@ nav:
         - 容器技术: basic/docker/tech.md
       - kubernetes:
         - 知识点: basic/kubernetes/point.md
+        - pod调度到node: basic/kubernetes/schedule.md
       - git: basic/git/useage.md
       - network:
         - allpoint: basic/networl/allpoint.md
