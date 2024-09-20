@@ -7,6 +7,7 @@ nav:
       - AI: cv/AI开发_李仁杰_15622300793.html
       - 后台: cv/后台开发_李仁杰_15622300793.html
     - 项目总结: prjectintro.md
+    - 经历介绍: jobintro.md
     - WAF控制面:
       - API: 
         - 防范sqlinject: console/api/sqlinject.md
@@ -292,6 +293,7 @@ nav:
       - 框架: quant/框架.md
       - 实盘数据: quant/livedata.md
       - 金融:
+        - CTA: quant/finance/CTA.md
         - 指标: quant/finance/indcator.md
         - 红利: quant/finance/红利指数.md
         - 期权: quant/finance/straddle.md
