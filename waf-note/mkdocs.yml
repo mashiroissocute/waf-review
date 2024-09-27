@@ -327,9 +327,6 @@ nav:
             - 均线粘合发散: quant/strategy/期货均线粘合发散.md
           - 因子:
             - 微盘因子: quant/strategy/小微盘选币因子.md
-        - 量化投资_策略与技术:
-          - 介绍: quant/quantinvestment_strategy_tech/intro.md
-          - 选股: quant/quantinvestment_strategy_tech/choose.md
         - 交易工具: 
           - 网格马丁混合策略: quant/trading_tools/grid_DCA.md
           - 比例系数衰减网格策略: quant/trading_tools/grid_ratio.md
@@ -339,6 +336,10 @@ nav:
           - epoch: quant/ml/epoch.md
         - adptive-ai-modle:
           - intro: quant/ai/intro.md
+      - 书籍:
+        - 量化投资_策略与技术_丁鹏:
+          - 介绍: quant/quantinvestment_strategy_tech/intro.md
+          - 选股: quant/quantinvestment_strategy_tech/choose.md
       - freqtrade:
         - Home: quant/index.md
         - Quickstart with Docker: quant/docker_quickstart.md
