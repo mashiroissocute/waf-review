@@ -290,6 +290,8 @@ nav:
         - 基础: basic/clickhouse/clickhouse.md
     - QuantDev:
       - 项目总结: quant/summary.md
+      - prejob: 
+        - skills: quant/prejob/skill.md
       - 框架: quant/框架.md
       - 实盘数据: quant/livedata.md
       - 金融:
